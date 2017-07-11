@@ -63,7 +63,7 @@ if ( 'post-style-grid' === $style && '1' === $column ) {
 	<?php endif ?>
 	<?php
 	while ( $get_featured_posts->have_posts() ) : $get_featured_posts->the_post(); ?>
-		<article class="post <?php echo esc_attr( $style . ' ' . ( 'post-style-carousel' === $style ? 'swiper-slide' : suffice_get_column_class( $column ) ) . '' ); ?>">
+		<article class="post col-sm-6 <?php echo esc_attr( $style . ' ' . ( 'post-style-carousel' === $style ? 'swiper-slide' : suffice_get_column_class( $column ) ) . '' ); ?>">
 			<div class="article-inner">
 
 				<!-- ====== Entry Thumbnail =====  -->
