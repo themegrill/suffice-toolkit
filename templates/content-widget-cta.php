@@ -55,42 +55,40 @@ if ( 'cta-boxed-one' === $style ) {
 ?>
 <div class="cta <?php echo esc_attr( $style ); ?>">
 	<div class="cta-bordered-inner">
-		<div class="row">
-			<?php if ( 'cta-boxed-one' === $style && '' != $icon ) : ?>
-			<div class="cta-icon col-md-2">
-				<div class="cta-icon-inner cta-icon-hexagon">
-					<div class="cta-icon-container">
-						<i class="fa <?php echo esc_attr( $icon ); ?>"></i>
-					</div>
+		<?php if ( 'cta-boxed-one' === $style && '' != $icon ) : ?>
+		<div class="cta-icon">
+			<div class="cta-icon-inner cta-icon-hexagon">
+				<div class="cta-icon-container">
+					<i class="fa <?php echo esc_attr( $icon ); ?>"></i>
 				</div>
 			</div>
+		</div>
+		<?php endif; ?>
+
+		<div class="cta-info">
+			<?php if ( ! empty( $title ) ) : ?>
+			<h1 class="cta-title"><?php echo esc_html( $title ); ?></h1>
 			<?php endif; ?>
+			<?php if ( ! empty( $text ) ) : ?>
+			<div class="cta-content">
+				<p><?php echo esc_html( $text ); ?></p>
+			</div>
+			<?php endif; ?>
+		</div> <!-- end cta-info -->
 
-			<div class="cta-info <?php echo ( empty( $icon ) ? 'col-md-9' : 'col-md-7' ); ?>">
-				<?php if ( ! empty( $title ) ) : ?>
-				<h1 class="cta-title"><?php echo esc_html( $title ); ?></h1>
+		<div class="cta-actions col-md-3">
+			<div class="btn-group">
+				<?php if ( ! empty( $more_url ) ) :
+					$target = ('new-window' === $linktarget ? 'target="_blank"' : '');
+				?>
+					<a href="<?php echo esc_url( $more_url ); ?>" class="<?php echo $btn_class['one'] ?>"><?php echo esc_html( $more_text ); ?></a>
 				<?php endif; ?>
-				<?php if ( ! empty( $text ) ) : ?>
-				<div class="cta-content">
-					<p><?php echo esc_html( $text ); ?></p>
-				</div>
+				<?php if ( ! empty( $more_url2 ) && ( 'cta-boxed-one' != $style ) ) :
+					$target = ('new-window' === $linktarget ? 'target="_blank"' : '');
+				?>
+					<a href="<?php echo esc_url( $more_url2 ); ?>" class="<?php echo $btn_class['two'] ?>"><?php echo esc_html( $more_text2 ); ?></a>
 				<?php endif; ?>
-			</div> <!-- end cta-info -->
-
-			<div class="cta-actions col-md-3">
-				<div class="btn-group">
-					<?php if ( ! empty( $more_url ) ) :
-						$target = ('new-window' === $linktarget ? 'target="_blank"' : '');
-					?>
-						<a href="<?php echo esc_url( $more_url ); ?>" class="<?php echo $btn_class['one'] ?>"><?php echo esc_html( $more_text ); ?></a>
-					<?php endif; ?>
-					<?php if ( ! empty( $more_url2 ) && ( 'cta-boxed-one' != $style ) ) :
-						$target = ('new-window' === $linktarget ? 'target="_blank"' : '');
-					?>
-						<a href="<?php echo esc_url( $more_url2 ); ?>" class="<?php echo $btn_class['two'] ?>"><?php echo esc_html( $more_text2 ); ?></a>
-					<?php endif; ?>
-				</div> <!-- end btn-group -->
-			</div> <!-- end cta-actions -->
-		</div> <!-- end  row -->
+			</div> <!-- end btn-group -->
+		</div> <!-- end cta-actions -->
 	</div>
 </div> <!-- end cta-boxed-one -->
