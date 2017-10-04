@@ -120,7 +120,7 @@ class ST_Install {
 
 		self::update_ft_version();
 
-		delete_transient( 'ur_installing' );
+		delete_transient( 'st_installing' );
 	
 		// Flush rules after install
 		do_action( 'suffice_toolkit_flush_rewrite_rules' );
