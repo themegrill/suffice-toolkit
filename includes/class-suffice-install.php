@@ -80,6 +80,14 @@ class ST_Install {
 	public static function install() {
 		global $wpdb;
 
+		// Check if we are not already running this routine.
+		if ( 'yes' === get_transient( 'st_installing' ) ) {
+			return;
+		}
+
+		// If we made it till here nothing is running yet, lets set the transient now.
+		set_transient( 'st_installing', 'yes', MINUTE_IN_SECONDS * 10 );
+
 		if ( ! defined( 'ST_INSTALLING' ) ) {
 			define( 'ST_INSTALLING', true );
 		}
@@ -112,6 +120,8 @@ class ST_Install {
 
 		self::update_ft_version();
 
+		delete_transient( 'ur_installing' );
+	
 		// Flush rules after install
 		do_action( 'suffice_toolkit_flush_rewrite_rules' );
 
