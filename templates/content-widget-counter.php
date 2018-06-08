@@ -19,17 +19,42 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$title      = isset( $instance['counter-title'] ) ? $instance['counter-title'] : '';
-$icon       = isset( $instance['icon'] ) ? $instance['icon'] : '';
-$number     = isset( $instance['number'] ) ? $instance['number'] : '';
-$prefix     = isset( $instance['prefix'] ) ? $instance['prefix'] : '';
-$suffix     = isset( $instance['suffix'] ) ? $instance['suffix'] : '';
-$style      = isset( $instance['style'] ) ? $instance['style'] : 'counter-style-hexagon';
+
+/**
+ * General.
+ */
+$title  = isset( $instance['counter-title'] ) ? $instance['counter-title'] : '';
+$icon   = isset( $instance['icon'] ) ? $instance['icon'] : '';
+$number = isset( $instance['number'] ) ? $instance['number'] : '';
+$prefix = isset( $instance['prefix'] ) ? $instance['prefix'] : '';
+$suffix = isset( $instance['suffix'] ) ? $instance['suffix'] : '';
+
+/**
+ * Styling.
+ */
+$style = isset( $instance['style'] ) ? $instance['style'] : 'counter-style-hexagon';
+
+/**
+ * Color.
+ */
+$icon_color       = isset( $instance['icon-color'] ) ? $instance['icon-color'] : '';
+$text_color       = isset( $instance['text-color'] ) ? $instance['text-color'] : '';
+$background_color = isset( $instance['background-color'] ) ? $instance['background-color'] : '';
+
+// Add inline styles.
+$custom_icon_style = suffice_toolkit_inline_style( array(
+	'color' => $icon_color,
+) );
+
+$custom_text_style = suffice_toolkit_inline_style( array(
+	'color'            => $text_color,
+	'background_color' => $background_color,
+) );
 ?>
 <div class="counter-item <?php echo esc_attr( $style ); ?>">
 	<div class="counter-icon">
 		<div class="counter-icon-inner">
-			<i class="fa <?php echo esc_attr( $icon ); ?>"></i>
+			<i class="fa <?php echo esc_attr( $icon ); ?>" <?php echo esc_attr( $custom_icon_style ); ?>></i>
 		</div>
 	</div> <!-- end counter-icon -->
 	<div class="counter-info">

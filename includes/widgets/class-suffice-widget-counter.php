@@ -30,20 +30,20 @@ class ST_Widget_Counter extends ST_Widget {
 		$this->widget_name        = __( 'ST: Counter', 'suffice-toolkit' );
 		$this->control_ops        = array( 'width' => 400, 'height' => 350 );
 		$this->settings           = apply_filters( 'suffice_toolkit_widget_settings_' . $this->widget_id, array(
-			'counter-title' => array(
+			'counter-title'    => array(
 				'type'  => 'text',
 				'std'   => __( 'Counter Title', 'suffice-toolkit' ),
 				'label' => __( 'Title', 'suffice-toolkit' ),
 				'group' => __( 'General', 'suffice-toolkit' ),
 			),
-			'icon'  => array(
-				'type'  => 'icon_picker',
-				'std'   => '',
-				'label' => __( 'Counter Icon', 'suffice-toolkit' ),
+			'icon'             => array(
+				'type'    => 'icon_picker',
+				'std'     => '',
+				'label'   => __( 'Counter Icon', 'suffice-toolkit' ),
 				'options' => suffice_get_fontawesome_icons(),
-				'group' => __( 'General', 'suffice-toolkit' ),
+				'group'   => __( 'General', 'suffice-toolkit' ),
 			),
-			'number'  => array(
+			'number'           => array(
 				'type'  => 'number',
 				'step'  => 1,
 				'min'   => 1,
@@ -52,29 +52,50 @@ class ST_Widget_Counter extends ST_Widget {
 				'label' => __( 'Number', 'suffice-toolkit' ),
 				'group' => __( 'General', 'suffice-toolkit' ),
 			),
-			'prefix' => array(
-				'type'	=> 'text',
-				'std'   => '',
-				'label' => __( 'Prefix', 'suffice-toolkit' ),
-				'group' => __( 'General', 'suffice-toolkit' ),
-				'field_width'	=> 'col-half',
-				),
-			'suffix' => array(
-				'type'	=> 'text',
-				'std'   => '',
-				'label' => __( 'Suffix', 'suffice-toolkit' ),
-				'group' => __( 'General', 'suffice-toolkit' ),
-				'field_width'	=> 'col-half',
-				),
-			'style'  => array(
+			'prefix'           => array(
+				'type'        => 'text',
+				'std'         => '',
+				'label'       => __( 'Prefix', 'suffice-toolkit' ),
+				'group'       => __( 'General', 'suffice-toolkit' ),
+				'field_width' => 'col-half',
+			),
+			'suffix'           => array(
+				'type'        => 'text',
+				'std'         => '',
+				'label'       => __( 'Suffix', 'suffice-toolkit' ),
+				'group'       => __( 'General', 'suffice-toolkit' ),
+				'field_width' => 'col-half',
+			),
+			'style'            => array(
 				'type'    => 'radio-image',
 				'std'     => 'counter-style-hexagon',
 				'label'   => __( 'Icon Styling', 'suffice-toolkit' ),
 				'options' => array(
-					'counter-style-hexagon'      => ST()->plugin_url() . '/assets/images/counter-hexagon.png',
-					'counter-style-bold'         => ST()->plugin_url() . '/assets/images/counter-bold.png',
+					'counter-style-hexagon' => ST()->plugin_url() . '/assets/images/counter-hexagon.png',
+					'counter-style-bold'    => ST()->plugin_url() . '/assets/images/counter-bold.png',
 				),
-				'group' => __( 'Styling', 'suffice-toolkit' ),
+				'group'   => __( 'Styling', 'suffice-toolkit' ),
+			),
+			'icon-color'       => array(
+				'type'        => 'color_picker',
+				'std'         => '#424143',
+				'label'       => __( 'Icon Color', 'suffice-toolkit' ),
+				'group'       => __( 'Color', 'suffice-toolkit' ),
+				'field_width' => 'col-half',
+			),
+			'text-color'       => array(
+				'type'        => 'color_picker',
+				'std'         => '#424143',
+				'label'       => __( 'Text Color', 'suffice-toolkit' ),
+				'group'       => __( 'Color', 'suffice-toolkit' ),
+				'field_width' => 'col-half',
+			),
+			'background-color' => array(
+				'type'        => 'color_picker',
+				'std'         => '#cbc9cf',
+				'label'       => __( 'Background Color', 'suffice-toolkit' ),
+				'group'       => __( 'Color', 'suffice-toolkit' ),
+				'field_width' => 'col-half',
 			),
 		) );
 
