@@ -1,14 +1,14 @@
-# Copyright (C) 2017 ThemeGrill
+# Copyright (C) 2018 ThemeGrill
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Suffice Toolkit 1.0.0\n"
+"Project-Id-Version: Suffice Toolkit 1.0.1\n"
 "Report-Msgid-Bugs-To: themegrill@gmail.com\n"
-"POT-Creation-Date: 2017-06-20 10:33:27+00:00\n"
+"POT-Creation-Date: 2018-06-08 05:31:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
@@ -3334,19 +3334,19 @@ msgstr ""
 msgid "Taking a while? Click here to run it now."
 msgstr ""
 
-#: includes/class-suffice-install.php:271
+#: includes/class-suffice-install.php:280
 msgid "View Suffice Toolkit Documentation"
 msgstr ""
 
-#: includes/class-suffice-install.php:271
+#: includes/class-suffice-install.php:280
 msgid "Docs"
 msgstr ""
 
-#: includes/class-suffice-install.php:272
+#: includes/class-suffice-install.php:281
 msgid "Visit Free Customer Support Forum"
 msgstr ""
 
-#: includes/class-suffice-install.php:272
+#: includes/class-suffice-install.php:281
 msgid "Free Support"
 msgstr ""
 
@@ -3657,6 +3657,7 @@ msgid "Open in new window"
 msgstr ""
 
 #: includes/widgets/class-suffice-widget-button.php:75
+#: includes/widgets/class-suffice-widget-counter.php:82
 #: includes/widgets/class-suffice-widget-iconbox.php:98
 msgid "Icon Color"
 msgstr ""
@@ -3664,6 +3665,9 @@ msgstr ""
 #: includes/widgets/class-suffice-widget-button.php:76
 #: includes/widgets/class-suffice-widget-button.php:83
 #: includes/widgets/class-suffice-widget-button.php:90
+#: includes/widgets/class-suffice-widget-counter.php:83
+#: includes/widgets/class-suffice-widget-counter.php:90
+#: includes/widgets/class-suffice-widget-counter.php:97
 #: includes/widgets/class-suffice-widget-iconbox.php:99
 #: includes/widgets/class-suffice-widget-iconbox.php:105
 #: includes/widgets/class-suffice-widget-iconbox.php:111
@@ -3671,10 +3675,12 @@ msgid "Color"
 msgstr ""
 
 #: includes/widgets/class-suffice-widget-button.php:82
+#: includes/widgets/class-suffice-widget-counter.php:89
 msgid "Text Color"
 msgstr ""
 
 #: includes/widgets/class-suffice-widget-button.php:89
+#: includes/widgets/class-suffice-widget-counter.php:96
 msgid "Background Color"
 msgstr ""
 
@@ -4182,7 +4188,7 @@ msgid "Suffice Toolkit"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://themegrill.com/theme/suffice"
+msgid "https://themegrill.com/themes/suffice"
 msgstr ""
 
 #. Description of the plugin/theme

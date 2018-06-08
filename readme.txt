@@ -3,7 +3,7 @@ Contributors: ThemeGrill
 Tags: theme, suffice, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,8 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Suffice theme.
 
 == Changelog ==
+= 1.0.1 =
+* Add - color options for counter widget while fixing PHP error
 
 = 1.0.0 =
 * Initial Public Release
