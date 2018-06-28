@@ -63,8 +63,11 @@ $custom_text_style = suffice_toolkit_inline_style( array(
 		<a <?php echo esc_attr( $linktarget ); ?> class="btn <?php echo esc_attr( $btn_edge ) . ' ' . esc_attr( $btn_width ); ?>"<?php echo esc_attr( $custom_text_style ); ?> href="<?php echo esc_url( $btn_url ); ?>">
 			<?php if ( ! empty( $icon ) ) { ?>
 				<span class="fa <?php echo esc_attr( $icon ) . ' ' . esc_attr( $icon_position ); ?>"<?php echo esc_attr( $custom_icon_style ); ?>></span>
-			<?php }
-			echo esc_html( $btn_text ); ?>
+				<?php
+			}
+
+			echo esc_html( $btn_text );
+			?>
 		</a>
 	<?php } ?>
 </div>
