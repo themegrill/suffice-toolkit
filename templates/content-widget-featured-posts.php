@@ -20,9 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$source      = isset( $instance['source'] ) ? $instance['source'] : 'latest';
-$category    = isset( $instance['category'] ) ? $instance['category'] : '';
-$style       = isset( $instance['style'] ) ? $instance['style'] : 'feature-post-style-one';
+$source   = isset( $instance['source'] ) ? $instance['source'] : 'latest';
+$category = isset( $instance['category'] ) ? $instance['category'] : '';
+$style    = isset( $instance['style'] ) ? $instance['style'] : 'feature-post-style-one';
 
 // Image Size.
 $image_size = '';
@@ -62,48 +62,53 @@ if ( 'feature-post-style-one' === $style ) {
 
 if ( 'latest' === $source ) {
 	$get_featured_posts = new WP_Query( array(
-		'posts_per_page'        => $post_number,
-		'post_type'             => 'post',
-		'ignore_sticky_posts'   => true,
+		'posts_per_page'      => $post_number,
+		'post_type'           => 'post',
+		'ignore_sticky_posts' => true,
 	) );
 } else {
 	$get_featured_posts = new WP_Query( array(
-		'posts_per_page'        => $post_number,
-		'post_type'             => 'post',
-		'category__in'          => $category,
+		'posts_per_page' => $post_number,
+		'post_type'      => 'post',
+		'category__in'   => $category,
 	) );
 }
 ?>
 
 <div class="featured-post-container <?php echo esc_attr( $style ); ?>">
-	<div class="<?php echo esc_attr( $row_class ) ?>">
-	<?php
-	while ( $get_featured_posts->have_posts() ) : $get_featured_posts->the_post(); ?>
-		<?php if ( 1 === $get_featured_posts->current_post && 'feature-post-style-two' === $style ) : ?>
+	<div class="<?php echo esc_attr( $row_class ); ?>">
+		<?php
+		while ( $get_featured_posts->have_posts() ) :
+			$get_featured_posts->the_post();
+			?>
+
+			<?php if ( 1 === $get_featured_posts->current_post && 'feature-post-style-two' === $style ) : ?>
 			<div class="feature-post-grid-container">
 		<?php endif ?>
-			<article class="featured-post <?php echo esc_attr( $feature_post_class ) ?>">
+
+			<article class="featured-post <?php echo esc_attr( $feature_post_class ); ?>">
 				<div class="article-inner">
 					<figure class="entry-thumbnail">
 						<?php if ( has_post_thumbnail() ) : ?>
 							<?php the_post_thumbnail( ( 0 === $get_featured_posts->current_post && 'feature-post-style-two' === $style ? 'suffice-thumbnail-featured-two' : $image_size ) ); ?>
 						<?php else : ?>
-							<img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/img/no-' . $image_size . '.png' ) ?>" alt="">
+							<img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/img/no-' . $image_size . '.png' ); ?>" alt="">
 						<?php endif ?>
 					</figure>
 
 					<div class="entry-info-container">
 						<header class="entry-header">
 							<div class="entry-cat">
-								<span class="entry-cat-name entry-cat-id-<?php echo esc_attr( suffice_get_first_category_id( $source, $category ) ) ?>"><a href="<?php echo esc_url( suffice_get_first_category_link( $source, $category ) ); ?>"><?php echo esc_attr( suffice_get_first_category_name( $source, $category ) ); ?></a></span>
+								<span class="entry-cat-name entry-cat-id-<?php echo esc_attr( suffice_get_first_category_id( $source, $category ) ); ?>"><a href="<?php echo esc_url( suffice_get_first_category_link( $source, $category ) ); ?>"><?php echo esc_attr( suffice_get_first_category_name( $source, $category ) ); ?></a></span>
 							</div>
 
-							<a href="<?php echo esc_url( get_the_permalink() ); ?>"><h1 class="entry-title"><?php echo esc_html( get_the_title() ); ?></h1></a>
+							<a href="<?php echo esc_url( get_the_permalink() ); ?>">
+								<h3 class="entry-title"><?php echo esc_html( get_the_title() ); ?></h3></a>
 
 							<div class="entry-meta">
-								<span class="posted-on">
-									<?php echo esc_attr( human_time_diff( get_the_date( 'U' ), current_time( 'timestamp' ) ) . ' ago' ); ?>
-								</span>
+										<span class="posted-on">
+											<?php echo esc_attr( human_time_diff( get_the_date( 'U' ), current_time( 'timestamp' ) ) . ' ago' ); ?>
+										</span>
 								<?php
 								if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 									echo '<span class="comments">';
@@ -122,11 +127,13 @@ if ( 'latest' === $source ) {
 
 				</div>
 			</article>
-		<?php if ( $get_featured_posts->current_post === $get_featured_posts->post_count - 1 && 'feature-post-style-two' === $style ) : ?>
+			<?php if ( $get_featured_posts->current_post === $get_featured_posts->post_count - 1 && 'feature-post-style-two' === $style ) : ?>
 			</div><!-- .feature-post-grid-container -->
-		<?php endif ?>
-	<?php endwhile;
-	wp_reset_postdata();
-	?>
+			<?php
+			endif;
+
+		endwhile;
+		wp_reset_postdata();
+		?>
 	</div>  <!-- .row -->
 </div> <!-- .featured-post-container -->

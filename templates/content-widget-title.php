@@ -19,20 +19,20 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$title      		= isset( $instance['tg-title'] ) ? $instance['tg-title'] : '';
-$sub_title      	= isset( $instance['tg-sub-title'] ) ? $instance['tg-sub-title'] : '';
-$position      		= isset( $instance['position'] ) ? $instance['position'] : '';
-$style      		= isset( $instance['style'] ) ? $instance['style'] : '';
+$title     = isset( $instance['tg-title'] ) ? $instance['tg-title'] : '';
+$sub_title = isset( $instance['tg-sub-title'] ) ? $instance['tg-sub-title'] : '';
+$position  = isset( $instance['position'] ) ? $instance['position'] : '';
+$style     = isset( $instance['style'] ) ? $instance['style'] : '';
 
 ?>
-<div class="title <?php echo esc_attr( $style . ' ' . $position ); ?>" >
+<div class="title <?php echo esc_attr( $style . ' ' . $position ); ?>">
 	<h3 class="title-title"><?php echo esc_html( $title ); ?></h3>
 
 	<?php if ( $sub_title && ! empty( $sub_title ) ) : ?>
 		<p class="sub-title"><?php echo esc_html( $sub_title ); ?></p>
 	<?php endif ?>
 
-	<?php if (  'title-ribbon-middle' === $style ) : ?>
+	<?php if ( 'title-ribbon-middle' === $style ) : ?>
 		<hr class="dotted">
 	<?php endif; ?>
 
