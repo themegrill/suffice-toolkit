@@ -20,32 +20,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 $logos      = isset( $instance['repeatable_logos'] ) ? $instance['repeatable_logos'] : array();
-$style      = isset( $instance['style']) ? $instance['style'] : 'logos-slider-style-clean';
-$linktarget = isset( $instance['link-target']) ? $instance['link-target'] : 'same-window';
-$columns    = isset( $instance['columns']) ? $instance['columns'] : '3';
+$style      = isset( $instance['style'] ) ? $instance['style'] : 'logos-slider-style-clean';
+$linktarget = isset( $instance['link-target'] ) ? $instance['link-target'] : 'same-window';
+$columns    = isset( $instance['columns'] ) ? $instance['columns'] : '3';
 ?>
 <div class="container">
 	<div class="logos-slider-container <?php echo esc_attr( $style ); ?>">
 		<div class="logo-items-container swiper-container">
 			<div class="swiper-wrapper">
-			<?php
-			if( !empty( $logos ) ) :
-			foreach ($logos as $logo) { ?>
-				<div class="logo-item swiper-slide">
-					<?php
-					if ( !empty( $logo['more-url'] )) {
-					$target = ($linktarget == 'new-window' ? 'target="_blank"' : '');
-					?>
-					<a href="<?php echo esc_url( $logo['more-url'] ); ?>"<?php echo esc_attr( $target ); ?>>
-					<?php } ?>
-						<img src="<?php echo esc_url( $logo['image'] ); ?>" alt="<?php echo esc_attr( $logo['text'] ); ?>" />
-					<?php if ( !empty( $logo['more-url'] )) { ?>
-					</a>
-					<?php } ?>
-				</div>
-			<?php
-			} //foreach
-			endif; ?>
+				<?php
+				if ( ! empty( $logos ) ) :
+					foreach ( $logos as $logo ) {
+						?>
+						<div class="logo-item swiper-slide">
+							<?php
+							if ( ! empty( $logo['more-url'] ) ) {
+							$target = ( 'new-window' === $linktarget ? 'target="_blank"' : '' );
+							?>
+							<a href="<?php echo esc_url( $logo['more-url'] ); ?>"<?php echo esc_attr( $target ); ?>>
+								<?php } ?>
+								<img src="<?php echo esc_url( $logo['image'] ); ?>" alt="<?php echo esc_attr( $logo['text'] ); ?>" />
+								<?php if ( ! empty( $logo['more-url'] ) ) { ?>
+							</a>
+						<?php } ?>
+						</div>
+						<?php
+					}
+				endif;
+				?>
 			</div>
 		</div>
 	</div>

@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 $title      = isset( $instance['iconbox-title'] ) ? $instance['iconbox-title'] : '';
-$icon_type  = isset( $instance[ 'icon_type' ] ) ? $instance[ 'icon_type' ] : 'icon';
+$icon_type  = isset( $instance['icon_type'] ) ? $instance['icon_type'] : 'icon';
 $icon       = isset( $instance['icon'] ) ? $instance['icon'] : '';
 $image      = isset( $instance['image'] ) ? $instance['image'] : '';
 $text       = isset( $instance['text'] ) ? $instance['text'] : '';
@@ -30,46 +30,47 @@ $style      = isset( $instance['style'] ) ? $instance['style'] : 'icon-box-hexag
 $linktarget = isset( $instance['link-target'] ) ? $instance['link-target'] : 'same-window';
 
 // Icon Color.
-$icon_color             = isset( $instance['icon-color'] ) ? $instance['icon-color'] : '';
-$icon_background_color  = isset( $instance['icon-background-color'] ) ? $instance['icon-background-color'] : '';
-$icon_font_size         = isset( $instance['icon-font-size'] ) ? $instance['icon-font-size'] : '';
+$icon_color            = isset( $instance['icon-color'] ) ? $instance['icon-color'] : '';
+$icon_background_color = isset( $instance['icon-background-color'] ) ? $instance['icon-background-color'] : '';
+$icon_font_size        = isset( $instance['icon-font-size'] ) ? $instance['icon-font-size'] : '';
 
 $custom_icon_style = suffice_toolkit_inline_style( array(
-	'color'             => $icon_color,
-	'font_size'         => $icon_font_size,
-	'background_color'  => $icon_background_color,
+	'color'            => $icon_color,
+	'font_size'        => $icon_font_size,
+	'background_color' => $icon_background_color,
 ) );
 ?>
 <div class="icon-box <?php echo esc_attr( $style ); ?>">
-	<?php if (  'icon' == $icon_type &&  ! empty( $icon ) ) : ?>
-	<div class="icon-box-icon"<?php echo esc_attr( $custom_icon_style ); ?>>
-		<div class="icon-box-icon-container">
-			<div class="icon-box-inner-icon">
-				<i class="fa <?php echo esc_attr( $icon ); ?>"></i>
+	<?php if ( 'icon' === $icon_type && ! empty( $icon ) ) : ?>
+		<div class="icon-box-icon"<?php echo esc_attr( $custom_icon_style ); ?>>
+			<div class="icon-box-icon-container">
+				<div class="icon-box-inner-icon">
+					<i class="fa <?php echo esc_attr( $icon ); ?>"></i>
+				</div>
 			</div>
 		</div>
-	</div>
 	<?php endif; ?>
-	<?php if (  'image' == $icon_type &&  ! empty( $image ) ) : ?>
-	<div class="icon-box-image"<?php echo esc_attr( $custom_icon_style ); ?>>
-		<div class="icon-box-image-container">
-			<div class="icon-box-inner-image">
-				<img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $title ); ?>" />
+	<?php if ( 'image' === $icon_type && ! empty( $image ) ) : ?>
+		<div class="icon-box-image"<?php echo esc_attr( $custom_icon_style ); ?>>
+			<div class="icon-box-image-container">
+				<div class="icon-box-inner-image">
+					<img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $title ); ?>" />
+				</div>
 			</div>
 		</div>
-	</div>
 	<?php endif; ?>
 	<div class="icon-box-description">
 		<?php if ( ! empty( $title ) ) : ?>
-		<h5 class="icon-box-title"><?php echo esc_html( $title ); ?></h5>
+			<h5 class="icon-box-title"><?php echo esc_html( $title ); ?></h5>
 		<?php endif; ?>
 		<?php if ( ! empty( $text ) ) : ?>
-		<p class="icon-box-content"><?php echo esc_html( $text ); ?></p>
+			<p class="icon-box-content"><?php echo esc_html( $text ); ?></p>
 		<?php endif; ?>
-		<?php if ( ! empty( $btn_link ) ) :
-			$target = ('new-window' === $linktarget ? 'target="_blank"' : '');
-		?>
-		<a class="icon-box-readmore" href="<?php echo esc_url( $btn_link ); ?>"<?php echo esc_attr( $target ); ?>><?php echo esc_html( $btn_text ); ?></a>
+		<?php
+		if ( ! empty( $btn_link ) ) :
+			$target = ( 'new-window' === $linktarget ? 'target="_blank"' : '' );
+			?>
+			<a class="icon-box-readmore" href="<?php echo esc_url( $btn_link ); ?>"<?php echo esc_attr( $target ); ?>><?php echo esc_html( $btn_text ); ?></a>
 		<?php endif; ?>
 	</div>
 </div> <!-- end icon-box -->
