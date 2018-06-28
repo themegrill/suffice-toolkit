@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Suffice theme.
 
 == Changelog ==
+= TBD =
+* Update - Heading tags in widgets.
+
 = 1.0.1 - 2018-06-08 =
 * Add - color options for counter widget while fixing PHP error
 
