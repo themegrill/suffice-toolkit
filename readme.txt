@@ -31,7 +31,7 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Suffice theme.
 
 == Changelog ==
-= 1.0.2 - 2018-06-28 =
+= 1.0.2 - 2018-07-19 =
 * Update - Heading tags in widgets.
 
 = 1.0.1 - 2018-06-08 =
