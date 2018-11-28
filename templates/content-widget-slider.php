@@ -51,8 +51,11 @@ $height            = isset( $instance['height'] ) ? $instance['height'] : 'slide
 									</div> <!-- slider-content-inner -->
 								</div> <!-- .container -->
 							</div> <!-- .slider-content -->
+							<?php $attachment_post_id = attachment_url_to_postid( $slider['image'] );
+							$img_altr                 = get_post_meta( $attachment_post_id, '_wp_attachment_image_alt', true );
+							$img_alt                  = ! empty( $img_altr ) ? $img_altr : $slider['title']; ?>
 							<figure class="slider-thumbnail">
-								<img src="<?php echo esc_url( $slider['image'] ); ?>" alt="<?php echo esc_html( $slider['title'] ); ?>" />
+								<img src="<?php echo esc_url( $slider['image'] ); ?>" alt="<?php echo esc_html( $img_alt ); ?>" />
 							</figure>
 						</div> <!-- swiper-slide -->
 						<?php
