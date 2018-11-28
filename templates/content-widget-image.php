@@ -20,11 +20,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$image = isset( $instance['image'] ) ? $instance['image'] : '';
-$link  = isset( $instance['image_link'] ) ? $instance['image_link'] : '';
+$image              = isset( $instance['image'] ) ? $instance['image'] : '';
+$link               = isset( $instance['image_link'] ) ? $instance['image_link'] : '';
+$attachment_post_id = attachment_url_to_postid( $image );
+$img_altr           = get_post_meta( $attachment_post_id, '_wp_attachment_image_alt', true );
+$img_alt            = ! empty( $img_altr ) ? $img_altr : '';
 ?>
 <?php if ( ! empty( $link ) ) { ?>
-	<a href="<?php echo esc_url( $link ); ?>"><img src="<?php echo esc_url( $image ); ?>" /></a>
+	<a href="<?php echo esc_url( $link ); ?>"><img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" /></a>
 <?php } else { ?>
 	<img src="<?php echo esc_url( $image ); ?>" />
 <?php } ?>
