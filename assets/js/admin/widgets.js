@@ -143,7 +143,7 @@ jQuery( function ( $ ) {
 			}
 		}).change();
 
-		$( 'select' ).change( function() {
+		$( 'select.availability' ).change( function() {
 			if ( $( this ).val() === 'post-style-carousel' ) {
 				$( this ).closest( 'p' ).next( 'p' ).hide();
 			} else {
