@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Suffice theme.
 
 == Changelog ==
+= TBD =
+* Fix - Compatibility issue with WPML plugin
+
 = 1.0.2 - 2018-07-19 =
 * Update - Heading tags in widgets.
 
