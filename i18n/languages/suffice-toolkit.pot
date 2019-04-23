@@ -1,36 +1,36 @@
-# Copyright (C) 2018 ThemeGrill
+# Copyright (C) 2019 ThemeGrill
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Suffice Toolkit 1.0.2\n"
+"Project-Id-Version: Suffice Toolkit 1.0.3\n"
 "Report-Msgid-Bugs-To: themegrill@gmail.com\n"
-"POT-Creation-Date: 2018-06-28 10:18:28+00:00\n"
+"POT-Creation-Date: 2019-04-23 05:58:18+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
 
-#: includes/widgets/class-suffice-widget-blog.php:80
+#: includes/widgets/class-suffice-widget-blog.php:83
 #: includes/widgets/class-suffice-widget-logo.php:80
 #: includes/widgets/class-suffice-widget-testimonial.php:75
 msgid "1"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:81
+#: includes/widgets/class-suffice-widget-blog.php:84
 #: includes/widgets/class-suffice-widget-logo.php:81
 #: includes/widgets/class-suffice-widget-testimonial.php:76
 msgid "2"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:82
+#: includes/widgets/class-suffice-widget-blog.php:85
 #: includes/widgets/class-suffice-widget-logo.php:82
 msgid "3"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:83
+#: includes/widgets/class-suffice-widget-blog.php:86
 #: includes/widgets/class-suffice-widget-logo.php:83
 msgid "4"
 msgstr ""
@@ -1448,7 +1448,7 @@ msgstr ""
 
 #: i18n/fontawesome.php:368 includes/widgets/class-suffice-widget-image.php:36
 #: includes/widgets/class-suffice-widget-logo.php:49
-#: includes/widgets/class-suffice-widget-slider.php:63
+#: includes/widgets/class-suffice-widget-slider.php:66
 #: includes/widgets/class-suffice-widget-testimonial.php:60
 msgid "Image"
 msgstr ""
@@ -1722,7 +1722,7 @@ msgid "Meanpath"
 msgstr ""
 
 #: i18n/fontawesome.php:436
-#: includes/widgets/class-suffice-widget-slider.php:131
+#: includes/widgets/class-suffice-widget-slider.php:134
 msgid "Medium"
 msgstr ""
 
@@ -2987,7 +2987,7 @@ msgid "These settings control the permalinks specifically used for portfolio."
 msgstr ""
 
 #: includes/admin/class-suffice-admin-permalink-settings.php:95
-#: includes/widgets/class-suffice-widget-slider.php:80
+#: includes/widgets/class-suffice-widget-slider.php:83
 msgid "Default"
 msgstr ""
 
@@ -3204,10 +3204,10 @@ msgid "Top Sidebar Position options on this page."
 msgstr ""
 
 #: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:34
-#: includes/widgets/class-suffice-widget-blog.php:40
-#: includes/widgets/class-suffice-widget-blog.php:51
-#: includes/widgets/class-suffice-widget-blog.php:63
-#: includes/widgets/class-suffice-widget-blog.php:86
+#: includes/widgets/class-suffice-widget-blog.php:43
+#: includes/widgets/class-suffice-widget-blog.php:54
+#: includes/widgets/class-suffice-widget-blog.php:66
+#: includes/widgets/class-suffice-widget-blog.php:89
 #: includes/widgets/class-suffice-widget-button.php:37
 #: includes/widgets/class-suffice-widget-button.php:43
 #: includes/widgets/class-suffice-widget-button.php:50
@@ -3242,8 +3242,8 @@ msgstr ""
 #: includes/widgets/class-suffice-widget-portfolio.php:56
 #: includes/widgets/class-suffice-widget-portfolio.php:63
 #: includes/widgets/class-suffice-widget-portfolio.php:73
-#: includes/widgets/class-suffice-widget-slider.php:136
-#: includes/widgets/class-suffice-widget-slider.php:156
+#: includes/widgets/class-suffice-widget-slider.php:139
+#: includes/widgets/class-suffice-widget-slider.php:159
 #: includes/widgets/class-suffice-widget-team.php:37
 #: includes/widgets/class-suffice-widget-team.php:43
 #: includes/widgets/class-suffice-widget-team.php:49
@@ -3555,36 +3555,36 @@ msgstr ""
 msgid "ST: Blog"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:39
+#: includes/widgets/class-suffice-widget-blog.php:42
 msgid "Number of Posts"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:45
+#: includes/widgets/class-suffice-widget-blog.php:48
 msgid "Blog Posts Source:"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:47
+#: includes/widgets/class-suffice-widget-blog.php:50
 #: includes/widgets/class-suffice-widget-featured-post.php:38
 msgid "Latest Posts"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:48
+#: includes/widgets/class-suffice-widget-blog.php:51
 #: includes/widgets/class-suffice-widget-featured-post.php:39
 msgid "Specific Category"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:57
+#: includes/widgets/class-suffice-widget-blog.php:60
 #: includes/widgets/class-suffice-widget-featured-post.php:46
 msgid "Select Category"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:68
+#: includes/widgets/class-suffice-widget-blog.php:71
 #: includes/widgets/class-suffice-widget-featured-post.php:57
 #: includes/widgets/class-suffice-widget-portfolio.php:78
 msgid "Widget Style"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:73
+#: includes/widgets/class-suffice-widget-blog.php:76
 #: includes/widgets/class-suffice-widget-button.php:60
 #: includes/widgets/class-suffice-widget-button.php:103
 #: includes/widgets/class-suffice-widget-button.php:115
@@ -3595,7 +3595,7 @@ msgstr ""
 #: includes/widgets/class-suffice-widget-iconbox.php:93
 #: includes/widgets/class-suffice-widget-logo.php:97
 #: includes/widgets/class-suffice-widget-portfolio.php:83
-#: includes/widgets/class-suffice-widget-slider.php:146
+#: includes/widgets/class-suffice-widget-slider.php:149
 #: includes/widgets/class-suffice-widget-team.php:80
 #: includes/widgets/class-suffice-widget-testimonial.php:87
 #: includes/widgets/class-suffice-widget-title.php:54
@@ -3603,7 +3603,7 @@ msgstr ""
 msgid "Styling"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-blog.php:78
+#: includes/widgets/class-suffice-widget-blog.php:81
 msgid "Number of post per row"
 msgstr ""
 
@@ -3618,12 +3618,12 @@ msgstr ""
 #: includes/widgets/class-suffice-widget-button.php:35
 #: includes/widgets/class-suffice-widget-button.php:36
 #: includes/widgets/class-suffice-widget-iconbox.php:74
-#: includes/widgets/class-suffice-widget-slider.php:68
+#: includes/widgets/class-suffice-widget-slider.php:71
 msgid "Button Text"
 msgstr ""
 
 #: includes/widgets/class-suffice-widget-button.php:42
-#: includes/widgets/class-suffice-widget-slider.php:73
+#: includes/widgets/class-suffice-widget-slider.php:76
 msgid "Button URL"
 msgstr ""
 
@@ -3685,12 +3685,12 @@ msgid "Background Color"
 msgstr ""
 
 #: includes/widgets/class-suffice-widget-button.php:96
-#: includes/widgets/class-suffice-widget-slider.php:116
+#: includes/widgets/class-suffice-widget-slider.php:119
 msgid "Button Edge"
 msgstr ""
 
 #: includes/widgets/class-suffice-widget-button.php:108
-#: includes/widgets/class-suffice-widget-slider.php:127
+#: includes/widgets/class-suffice-widget-slider.php:130
 msgid "Button Width"
 msgstr ""
 
@@ -3713,8 +3713,8 @@ msgstr ""
 #: includes/widgets/class-suffice-widget-counter.php:36
 #: includes/widgets/class-suffice-widget-cta.php:36
 #: includes/widgets/class-suffice-widget-iconbox.php:36
-#: includes/widgets/class-suffice-widget-slider.php:52
-#: includes/widgets/class-suffice-widget-slider.php:53
+#: includes/widgets/class-suffice-widget-slider.php:55
+#: includes/widgets/class-suffice-widget-slider.php:56
 #: includes/widgets/class-suffice-widget-title.php:35
 #: includes/widgets/class-suffice-widget-title.php:36
 msgid "Title"
@@ -3762,8 +3762,8 @@ msgstr ""
 #: includes/widgets/class-suffice-widget-iconbox.php:67
 #: includes/widgets/class-suffice-widget-logo.php:41
 #: includes/widgets/class-suffice-widget-logo.php:58
-#: includes/widgets/class-suffice-widget-slider.php:41
-#: includes/widgets/class-suffice-widget-slider.php:57
+#: includes/widgets/class-suffice-widget-slider.php:44
+#: includes/widgets/class-suffice-widget-slider.php:60
 #: includes/widgets/class-suffice-widget-testimonial.php:41
 #: includes/widgets/class-suffice-widget-testimonial.php:54
 msgid "Click here to add your own text"
@@ -3771,7 +3771,7 @@ msgstr ""
 
 #: includes/widgets/class-suffice-widget-cta.php:49
 #: includes/widgets/class-suffice-widget-iconbox.php:68
-#: includes/widgets/class-suffice-widget-slider.php:58
+#: includes/widgets/class-suffice-widget-slider.php:61
 #: includes/widgets/class-suffice-widget-testimonial.php:55
 msgid "Text"
 msgstr ""
@@ -3936,131 +3936,131 @@ msgstr ""
 msgid "ST: Slider"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:35
+#: includes/widgets/class-suffice-widget-slider.php:38
 msgid "Sortable Sliders"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:36
+#: includes/widgets/class-suffice-widget-slider.php:39
 msgid "Brand Slider"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:37
+#: includes/widgets/class-suffice-widget-slider.php:40
 msgid "Add New Slider"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:40
+#: includes/widgets/class-suffice-widget-slider.php:43
 msgid "Slider 1"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:78
+#: includes/widgets/class-suffice-widget-slider.php:81
 msgid "Slider Content Style"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:81
+#: includes/widgets/class-suffice-widget-slider.php:84
 msgid "Thin"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:82
+#: includes/widgets/class-suffice-widget-slider.php:85
 msgid "Transparent"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:83
+#: includes/widgets/class-suffice-widget-slider.php:86
 msgid "Cursive"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:89
+#: includes/widgets/class-suffice-widget-slider.php:92
 msgid "Slider Content Position"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:91
+#: includes/widgets/class-suffice-widget-slider.php:94
 msgid "Left"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:92
+#: includes/widgets/class-suffice-widget-slider.php:95
 msgid "Right"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:93
+#: includes/widgets/class-suffice-widget-slider.php:96
 msgid "Center"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:99
+#: includes/widgets/class-suffice-widget-slider.php:102
 msgid "Button Style/Color"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:101
+#: includes/widgets/class-suffice-widget-slider.php:104
 msgid "Default Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:102
+#: includes/widgets/class-suffice-widget-slider.php:105
 msgid "Ghost Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:103
+#: includes/widgets/class-suffice-widget-slider.php:106
 msgid "White Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:104
+#: includes/widgets/class-suffice-widget-slider.php:107
 msgid "Black Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:105
+#: includes/widgets/class-suffice-widget-slider.php:108
 msgid "Orange Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:106
+#: includes/widgets/class-suffice-widget-slider.php:109
 msgid "Cyan Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:107
+#: includes/widgets/class-suffice-widget-slider.php:110
 msgid "Pink Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:108
+#: includes/widgets/class-suffice-widget-slider.php:111
 msgid "Yellow Button"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:118
+#: includes/widgets/class-suffice-widget-slider.php:121
 msgid "Flat"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:119
+#: includes/widgets/class-suffice-widget-slider.php:122
 msgid "Rounded"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:120
+#: includes/widgets/class-suffice-widget-slider.php:123
 msgid "Bordered"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:121
+#: includes/widgets/class-suffice-widget-slider.php:124
 msgid "Rounded Edges"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:129
+#: includes/widgets/class-suffice-widget-slider.php:132
 msgid "Small"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:130
+#: includes/widgets/class-suffice-widget-slider.php:133
 msgid "Wide"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:132
+#: includes/widgets/class-suffice-widget-slider.php:135
 msgid "Large"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:141
+#: includes/widgets/class-suffice-widget-slider.php:144
 msgid "Slider Navigation Button Style"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:151
+#: includes/widgets/class-suffice-widget-slider.php:154
 msgid "Slider Height"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:153
+#: includes/widgets/class-suffice-widget-slider.php:156
 msgid "Auto Height"
 msgstr ""
 
-#: includes/widgets/class-suffice-widget-slider.php:154
+#: includes/widgets/class-suffice-widget-slider.php:157
 msgid "Full Viewport Height"
 msgstr ""
 
@@ -4169,13 +4169,13 @@ msgstr ""
 msgid "Title Position"
 msgstr ""
 
-#: templates/content-widget-blog.php:97 templates/content-widget-blog.php:137
-#: templates/content-widget-featured-posts.php:111
+#: templates/content-widget-blog.php:99 templates/content-widget-blog.php:139
+#: templates/content-widget-featured-posts.php:116
 #. translators: %s: post title
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#: templates/content-widget-blog.php:119 templates/content-widget-blog.php:142
+#: templates/content-widget-blog.php:121 templates/content-widget-blog.php:144
 msgid "Read More"
 msgstr ""
 
@@ -4311,7 +4311,7 @@ msgctxt "Admin menu name"
 msgid "Portfolio"
 msgstr ""
 
-#: templates/content-widget-blog.php:88 templates/content-widget-blog.php:128
+#: templates/content-widget-blog.php:90 templates/content-widget-blog.php:130
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
