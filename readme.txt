@@ -2,7 +2,7 @@
 Contributors: ThemeGrill
 Tags: theme, suffice, toolkit, themegrill
 Requires at least: 4.0
-Tested up to: 5.2.2
+Tested up to: 5.7.1
 Stable tag: 1.0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -31,6 +31,9 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Suffice theme.
 
 == Changelog ==
+== 1.0.5 - 06-07-2021 ==
+* Tweak - Updated `Tested up to` to 5.7.1.
+
 = 1.0.4 - 2019-06-20 =
 * Tweak - Remove strings from translation for unrequired strings.
 
