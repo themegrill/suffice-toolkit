@@ -32,7 +32,7 @@ Get free support at https://themegrill.com/support-forum/
 
 == Changelog ==
 
-== 1.0.6 - 08-07-2021 ==
+= 1.0.6 - 08-07-2021 =
 * Tweak - Updated `Tested up to` to 5.7
 
 = 1.0.4 - 2019-06-20 =
