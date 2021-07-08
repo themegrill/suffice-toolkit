@@ -53,7 +53,8 @@ module.exports = function( grunt ){
 		// Compile all .scss files.
 		sass: {
 			options: {
-				sourceMap: false,
+				sourcemap: 'none',
+				implementation: require( 'node-sass' ),
 				includePaths: require( 'node-bourbon' ).includePaths
 			},
 			compile: {
@@ -146,21 +147,6 @@ module.exports = function( grunt ){
 			}
 		},
 
-		// PHP Code Sniffer.
-		phpcs: {
-			options: {
-				bin: 'vendor/bin/phpcs',
-				standard: './phpcs.ruleset.xml'
-			},
-			dist: {
-				src:  [
-					'**/*.php',         // Include all files
-					'!node_modules/**', // Exclude node_modules/
-					'!vendor/**'        // Exclude vendor/
-				]
-			}
-		},
-
 		// Compress files and folders.
 		compress: {
 			options: {
@@ -190,7 +176,6 @@ module.exports = function( grunt ){
 
 	// Load NPM tasks to be used here
 	grunt.loadNpmTasks( 'grunt-sass' );
-	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
