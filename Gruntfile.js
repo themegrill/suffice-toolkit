@@ -53,7 +53,8 @@ module.exports = function( grunt ){
 		// Compile all .scss files.
 		sass: {
 			options: {
-				sourceMap: false,
+				sourcemap: 'none',
+				implementation: require( 'node-sass' ),
 				includePaths: require( 'node-bourbon' ).includePaths
 			},
 			compile: {
