@@ -3,7 +3,7 @@
  * Plugin Name: Suffice Toolkit
  * Plugin URI: https://themegrill.com/themes/suffice
  * Description: Suffice Toolkit is a companion for Suffice WordPress theme by ThemeGrill
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: ThemeGrill
  * Author URI: http://themegrill.com
  * License: GPLv3 or later
