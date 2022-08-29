@@ -32,6 +32,9 @@ Get free support at https://themegrill.com/support-forum/
 
 == Changelog ==
 
+== TBD ==
+* Fix - Homepage edit issue in suffice-pro theme
+
 == 1.0.6 - 08-07-2021 ==
 * Tweak - Updated `Tested up to` to 5.7
 
