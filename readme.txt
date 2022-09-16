@@ -3,7 +3,7 @@ Contributors: ThemeGrill
 Tags: theme, suffice, toolkit, themegrill
 Requires at least: 4.0
 Tested up to: 5.7
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,7 +32,7 @@ Get free support at https://themegrill.com/support-forum/
 
 == Changelog ==
 
-== TBD ==
+== 1.0.7 - 09-16-2022 ==
 * Fix - Homepage edit issue in suffice-pro theme
 
 == 1.0.6 - 08-07-2021 ==
