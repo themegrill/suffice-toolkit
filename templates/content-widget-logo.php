@@ -19,28 +19,28 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$logos      = isset( $instance['repeatable_logos'] ) ? $instance['repeatable_logos'] : array();
-$style      = isset( $instance['style'] ) ? $instance['style'] : 'logos-slider-style-clean';
-$linktarget = isset( $instance['link-target'] ) ? $instance['link-target'] : 'same-window';
-$columns    = isset( $instance['columns'] ) ? $instance['columns'] : '3';
+$suffice_toolkit_logos      = isset( $instance['repeatable_logos'] ) ? $instance['repeatable_logos'] : array();
+$suffice_toolkit_style      = isset( $instance['style'] ) ? $instance['style'] : 'logos-slider-style-clean';
+$suffice_toolkit_linktarget = isset( $instance['link-target'] ) ? $instance['link-target'] : 'same-window';
+$suffice_toolkit_columns    = isset( $instance['columns'] ) ? $instance['columns'] : '3';
 ?>
 <div class="container">
-	<div class="logos-slider-container <?php echo esc_attr( $style ); ?>">
+	<div class="logos-slider-container <?php echo esc_attr( $suffice_toolkit_style ); ?>">
 		<div class="logo-items-container swiper-container">
 			<div class="swiper-wrapper">
 				<?php
-				if ( ! empty( $logos ) ) :
-					foreach ( $logos as $logo ) {
+				if ( ! empty( $suffice_toolkit_logos ) ) :
+					foreach ( $suffice_toolkit_logos as $suffice_toolkit_logo ) {
 						?>
 						<div class="logo-item swiper-slide">
 							<?php
-							if ( ! empty( $logo['more-url'] ) ) {
-							$target = ( 'new-window' === $linktarget ? 'target="_blank"' : '' );
-							?>
-							<a href="<?php echo esc_url( $logo['more-url'] ); ?>"<?php echo esc_attr( $target ); ?>>
+							if ( ! empty( $suffice_toolkit_logo['more-url'] ) ) {
+								$suffice_toolkit_target = ( 'new-window' === $suffice_toolkit_linktarget ? 'target="_blank"' : '' );
+								?>
+							<a href="<?php echo esc_url( $suffice_toolkit_logo['more-url'] ); ?>"<?php echo esc_attr( $suffice_toolkit_target ); ?>>
 								<?php } ?>
-								<img src="<?php echo esc_url( $logo['image'] ); ?>" alt="<?php echo esc_attr( $logo['text'] ); ?>" />
-								<?php if ( ! empty( $logo['more-url'] ) ) { ?>
+								<img src="<?php echo esc_url( $suffice_toolkit_logo['image'] ); ?>" alt="<?php echo esc_attr( $suffice_toolkit_logo['text'] ); ?>" />
+								<?php if ( ! empty( $suffice_toolkit_logo['more-url'] ) ) { ?>
 							</a>
 						<?php } ?>
 						</div>

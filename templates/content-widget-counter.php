@@ -23,42 +23,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * General.
  */
-$title  = isset( $instance['counter-title'] ) ? $instance['counter-title'] : '';
-$icon   = isset( $instance['icon'] ) ? $instance['icon'] : '';
-$number = isset( $instance['number'] ) ? $instance['number'] : '';
-$prefix = isset( $instance['prefix'] ) ? $instance['prefix'] : '';
-$suffix = isset( $instance['suffix'] ) ? $instance['suffix'] : '';
+$suffice_toolkit_title  = isset( $instance['counter-title'] ) ? $instance['counter-title'] : '';
+$suffice_toolkit_icon   = isset( $instance['icon'] ) ? $instance['icon'] : '';
+$suffice_toolkit_number = isset( $instance['number'] ) ? $instance['number'] : '';
+$suffice_toolkit_prefix = isset( $instance['prefix'] ) ? $instance['prefix'] : '';
+$suffice_toolkit_suffix = isset( $instance['suffix'] ) ? $instance['suffix'] : '';
 
 /**
  * Styling.
  */
-$style = isset( $instance['style'] ) ? $instance['style'] : 'counter-style-hexagon';
+$suffice_toolkit_style = isset( $instance['style'] ) ? $instance['style'] : 'counter-style-hexagon';
 
 /**
  * Color.
  */
-$icon_color       = isset( $instance['icon-color'] ) ? $instance['icon-color'] : '';
-$text_color       = isset( $instance['text-color'] ) ? $instance['text-color'] : '';
-$background_color = isset( $instance['background-color'] ) ? $instance['background-color'] : '';
+$suffice_toolkit_icon_color       = isset( $instance['icon-color'] ) ? $instance['icon-color'] : '';
+$suffice_toolkit_text_color       = isset( $instance['text-color'] ) ? $instance['text-color'] : '';
+$suffice_toolkit_background_color = isset( $instance['background-color'] ) ? $instance['background-color'] : '';
 
 // Add inline styles.
-$custom_icon_style = suffice_toolkit_inline_style( array(
-	'color' => $icon_color,
-) );
+$suffice_toolkit_custom_icon_style = suffice_toolkit_inline_style(
+	array(
+		'color' => $suffice_toolkit_icon_color,
+	)
+);
 
-$custom_text_style = suffice_toolkit_inline_style( array(
-	'color'            => $text_color,
-	'background_color' => $background_color,
-) );
+$suffice_toolkit_custom_text_style = suffice_toolkit_inline_style(
+	array(
+		'color'            => $suffice_toolkit_text_color,
+		'background_color' => $suffice_toolkit_background_color,
+	)
+);
 ?>
-<div class="counter-item <?php echo esc_attr( $style ); ?>">
+<div class="counter-item <?php echo esc_attr( $suffice_toolkit_style ); ?>">
 	<div class="counter-icon">
 		<div class="counter-icon-inner">
-			<i class="fa <?php echo esc_attr( $icon ); ?>" <?php echo esc_attr( $custom_icon_style ); ?>></i>
+			<i class="fa <?php echo esc_attr( $suffice_toolkit_icon ); ?>" <?php echo esc_attr( $suffice_toolkit_custom_icon_style ); ?>></i>
 		</div>
 	</div> <!-- end counter-icon -->
 	<div class="counter-info">
-		<div class="counter-number" data-from="0" data-to="<?php echo esc_attr( $number ); ?>" data-prefix="<?php echo esc_attr( $prefix ); ?>" data-suffix="<?php echo esc_attr( $suffix ); ?>" <?php echo esc_attr( $custom_text_style ); ?>><?php echo esc_attr( $number ); ?></div>
-		<div class="counter-title"><?php echo esc_attr( $title ); ?></div>
+		<div class="counter-number" data-from="0" data-to="<?php echo esc_attr( $suffice_toolkit_number ); ?>" data-prefix="<?php echo esc_attr( $suffice_toolkit_prefix ); ?>" data-suffix="<?php echo esc_attr( $suffice_toolkit_suffix ); ?>" <?php echo esc_attr( $suffice_toolkit_custom_text_style ); ?>><?php echo esc_attr( $suffice_toolkit_number ); ?></div>
+		<div class="counter-title"><?php echo esc_attr( $suffice_toolkit_title ); ?></div>
 	</div>
 </div>
