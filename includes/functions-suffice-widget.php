@@ -84,7 +84,7 @@ add_filter('siteorigin_panels_widgets', 'suffice_toolkit_widgets');
 /* Add a tab for the theme widgets in the page builder */
 function suffice_toolkit_widgets_tab($tabs){
 	$tabs[] = array(
-		'title'  => __('Suffice Toolkit Widgets', 'suffice'),
+		'title'  => __('Suffice Toolkit Widgets', 'suffice-toolkit'),
 		'filter' => array(
 			'groups' => array('suffice-toolkit')
 		)

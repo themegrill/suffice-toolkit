@@ -95,20 +95,20 @@ class ST_Widget_Iconbox extends ST_Widget {
 			'icon-color'  => array(
 				'type'  => 'color_picker',
 				'std'   => '',
-				'label' => esc_html__( 'Icon Color', 'suffice' ),
-				'group' => esc_html__( 'Color', 'suffice' ),
+				'label' => esc_html__( 'Icon Color', 'suffice-toolkit' ),
+				'group' => esc_html__( 'Color', 'suffice-toolkit' ),
 			),
 			'icon-background-color'  => array(
 				'type'  => 'color_picker',
 				'std'   => '',
-				'label' => esc_html__( 'Icon Background Color', 'suffice' ),
-				'group' => esc_html__( 'Color', 'suffice' ),
+				'label' => esc_html__( 'Icon Background Color', 'suffice-toolkit' ),
+				'group' => esc_html__( 'Color', 'suffice-toolkit' ),
 			),
 			'icon-font-size'  => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => esc_html__( 'Icon Font Size', 'suffice' ),
-				'group' => esc_html__( 'Color', 'suffice' ),
+				'label' => esc_html__( 'Icon Font Size', 'suffice-toolkit' ),
+				'group' => esc_html__( 'Color', 'suffice-toolkit' ),
 			),
 			'link-target'  => array(
 				'type'    => 'select',

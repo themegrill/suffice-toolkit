@@ -38,7 +38,7 @@ class ST_Widget_Title extends ST_Widget {
 			),
 			'tg-sub-title' => array(
 				'type'  => 'text',
-				'std'   => __( '', 'suffice-toolkit' ),
+				'std'   => '',
 				'label' => __( 'Sub Title', 'suffice-toolkit' ),
 				'group' => __( 'General', 'suffice-toolkit' ),
 			),
