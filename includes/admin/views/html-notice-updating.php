@@ -9,5 +9,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div id="message" class="updated suffice-toolkit-message suffice-connect">
-	<p><strong><?php _e( 'SufficeToolkit Data Update', 'suffice-toolkit' ); ?></strong> &#8211; <?php _e( 'Your database is being updated in the background.', 'suffice-toolkit' ); ?> <a href="<?php echo esc_url( add_query_arg( 'force_update_suffice_toolkit', 'true', admin_url( 'themes.php' ) ) ); ?>"><?php _e( 'Taking a while? Click here to run it now.', 'suffice-toolkit' ); ?></a></p>
+	<p><strong><?php esc_html_e( 'SufficeToolkit Data Update', 'suffice-toolkit' ); ?></strong> &#8211; <?php esc_html_e( 'Your database is being updated in the background.', 'suffice-toolkit' ); ?> <a href="<?php echo esc_url( add_query_arg( 'force_update_suffice_toolkit', 'true', admin_url( 'themes.php' ) ) ); ?>"><?php esc_html_e( 'Taking a while? Click here to run it now.', 'suffice-toolkit' ); ?></a></p>
 </div>

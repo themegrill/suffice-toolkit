@@ -99,15 +99,15 @@ class ST_Admin_Notices {
 	 */
 	public static function hide_notices() {
 		if ( isset( $_GET['suffice-toolkit-hide-notice'] ) && isset( $_GET['_suffice_toolkit_notice_nonce'] ) ) {
-			if ( ! wp_verify_nonce( $_GET['_suffice_toolkit_notice_nonce'], 'suffice_toolkit_hide_notices_nonce' ) ) {
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
+			if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_suffice_toolkit_notice_nonce'] ) ), 'suffice_toolkit_hide_notices_nonce' ) ) {
+				wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			if ( ! current_user_can( 'manage_suffice_toolkit' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) );
+				wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
-			$hide_notice = sanitize_text_field( $_GET['suffice-toolkit-hide-notice'] );
+			$hide_notice = sanitize_text_field( wp_unslash( $_GET['suffice-toolkit-hide-notice'] ) );
 			self::remove_notice( $hide_notice );
 			do_action( 'suffice_toolkit_hide_' . $hide_notice . '_notice' );
 		}
@@ -153,7 +153,7 @@ class ST_Admin_Notices {
 					$notice_html = get_option( 'suffice_toolkit_admin_notice_' . $notice );
 
 					if ( $notice_html ) {
-						include( 'views/html-notice-custom.php' );
+						include 'views/html-notice-custom.php';
 					}
 				}
 			}
@@ -167,12 +167,12 @@ class ST_Admin_Notices {
 		if ( version_compare( get_option( 'suffice_toolkit_db_version' ), ST_VERSION, '<' ) ) {
 			$updater = new ST_Background_Updater();
 			if ( $updater->is_updating() || ! empty( $_GET['do_update_suffice_toolkit'] ) ) {
-				include( 'views/html-notice-updating.php' );
+				include 'views/html-notice-updating.php';
 			} else {
-				include( 'views/html-notice-update.php' );
+				include 'views/html-notice-update.php';
 			}
 		} else {
-			include( 'views/html-notice-updated.php' );
+			include 'views/html-notice-updated.php';
 		}
 	}
 }

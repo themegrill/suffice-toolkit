@@ -21,8 +21,8 @@ class ST_Install {
 	/** @var array DB updates and callbacks that need to be run per version */
 	private static $db_updates = array(
 		'1.0.0' => array(
-			'suffice_update_100_db_version'
-		)
+			'suffice_update_100_db_version',
+		),
 	);
 
 	/** @var object Background update class */
@@ -42,7 +42,7 @@ class ST_Install {
 	 * Init background updates.
 	 */
 	public static function init_background_updater() {
-		include_once( dirname( __FILE__ ) . '/class-suffice-background-updater.php' );
+		include_once __DIR__ . '/class-suffice-background-updater.php';
 		self::$background_updater = new ST_Background_Updater();
 	}
 
@@ -92,7 +92,7 @@ class ST_Install {
 		}
 
 		// Ensure needed classes are loaded.
-		include_once( dirname( __FILE__ ) . '/admin/class-suffice-admin-notices.php' );
+		include_once __DIR__ . '/admin/class-suffice-admin-notices.php';
 
 		self::create_roles();
 
@@ -136,7 +136,7 @@ class ST_Install {
 			AND a.option_name NOT LIKE %s
 			AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
 			AND b.option_value < %d";
-		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) );
+		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) ); //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		// Trigger action
 		do_action( 'suffice_toolkit_installed' );
@@ -207,11 +207,11 @@ class ST_Install {
 	 * Get capabilities for SufficeToolkit.
 	 * @return array
 	 */
-	 private static function get_core_capabilities() {
+	private static function get_core_capabilities() {
 		$capabilities = array();
 
 		$capabilities['core'] = array(
-			'manage_suffice_toolkit'
+			'manage_suffice_toolkit',
 		);
 
 		$capability_types = array( 'portfolio' );
@@ -238,7 +238,7 @@ class ST_Install {
 				"manage_{$capability_type}_terms",
 				"edit_{$capability_type}_terms",
 				"delete_{$capability_type}_terms",
-				"assign_{$capability_type}_terms"
+				"assign_{$capability_type}_terms",
 			);
 		}
 

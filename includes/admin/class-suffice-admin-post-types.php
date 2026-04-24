@@ -47,18 +47,42 @@ class ST_Admin_Post_Types {
 		global $post, $post_ID;
 
 		$messages['portfolio'] = array(
-			0 => '', // Unused. Messages start at index 1.
-			1 => sprintf( __( 'Project updated. <a href="%s">View Project</a>', 'suffice-toolkit' ), esc_url( get_permalink( $post_ID ) ) ),
-			2 => __( 'Custom field updated.', 'suffice-toolkit' ),
-			3 => __( 'Custom field deleted.', 'suffice-toolkit' ),
-			4 => __( 'Project updated.', 'suffice-toolkit' ),
-			5 => isset( $_GET['revision'] ) ? sprintf( __( 'Project restored to revision from %s', 'suffice-toolkit' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6 => sprintf( __( 'Project published. <a href="%s">View Project</a>', 'suffice-toolkit' ), esc_url( get_permalink( $post_ID ) ) ),
-			7 => __( 'Project saved.', 'suffice-toolkit' ),
-			8 => sprintf( __( 'Project submitted. <a target="_blank" href="%s">Preview project</a>', 'suffice-toolkit' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
-			9 => sprintf( __( 'Project scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview project</a>', 'suffice-toolkit' ),
-			  date_i18n( __( 'M j, Y @ G:i', 'suffice-toolkit' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
-			10 => sprintf( __( 'Project draft updated. <a target="_blank" href="%s">Preview project</a>', 'suffice-toolkit' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+			0  => '', // Unused. Messages start at index 1.
+			1  => sprintf(
+				/* translators: %s: project permalink URL */
+				__( 'Project updated. <a href="%s">View Project</a>', 'suffice-toolkit' ),
+				esc_url( get_permalink( $post_ID ) )
+			),
+			2  => __( 'Custom field updated.', 'suffice-toolkit' ),
+			3  => __( 'Custom field deleted.', 'suffice-toolkit' ),
+			4  => __( 'Project updated.', 'suffice-toolkit' ),
+			5  => isset( $_GET['revision'] ) ? sprintf( //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				/* translators: %s: revision date/time */
+				__( 'Project restored to revision from %s', 'suffice-toolkit' ),
+				wp_post_revision_title( (int) $_GET['revision'], false ) //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			) : false,
+			6  => sprintf(
+				/* translators: %s: project permalink URL */
+				__( 'Project published. <a href="%s">View Project</a>', 'suffice-toolkit' ),
+				esc_url( get_permalink( $post_ID ) )
+			),
+			7  => __( 'Project saved.', 'suffice-toolkit' ),
+			8  => sprintf(
+				/* translators: %s: project preview URL */
+				__( 'Project submitted. <a target="_blank" href="%s">Preview project</a>', 'suffice-toolkit' ),
+				esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) )
+			),
+			9  => sprintf(
+				/* translators: 1: scheduled date/time, 2: project preview URL */
+				__( 'Project scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview project</a>', 'suffice-toolkit' ),
+				date_i18n( __( 'M j, Y @ G:i', 'suffice-toolkit' ), strtotime( $post->post_date ) ),
+				esc_url( get_permalink( $post_ID ) )
+			),
+			10 => sprintf(
+				/* translators: %s: URL to preview the project */
+				__( 'Project draft updated. <a target="_blank" href="%s">Preview project</a>', 'suffice-toolkit' ),
+				esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) )
+			),
 		);
 
 		return $messages;
@@ -73,11 +97,45 @@ class ST_Admin_Post_Types {
 	public function bulk_post_updated_messages( $bulk_messages, $bulk_counts ) {
 
 		$bulk_messages['portfolio'] = array(
-			'updated'   => _n( '%s project updated.', '%s projects updated.', $bulk_counts['updated'], 'suffice-toolkit' ),
-			'locked'    => _n( '%s project not updated, somebody is editing it.', '%s projects not updated, somebody is editing them.', $bulk_counts['locked'], 'suffice-toolkit' ),
-			'deleted'   => _n( '%s project permanently deleted.', '%s projects permanently deleted.', $bulk_counts['deleted'], 'suffice-toolkit' ),
-			'trashed'   => _n( '%s project moved to the Trash.', '%s projects moved to the Trash.', $bulk_counts['trashed'], 'suffice-toolkit' ),
-			'untrashed' => _n( '%s project restored from the Trash.', '%s projects restored from the Trash.', $bulk_counts['untrashed'], 'suffice-toolkit' ),
+			/* translators: %s: number of projects updated */
+			'updated'   => _n(
+				'%s project updated.',
+				'%s projects updated.',
+				$bulk_counts['updated'],
+				'suffice-toolkit'
+			),
+
+			/* translators: %s: number of projects not updated because they are locked */
+			'locked'    => _n(
+				'%s project not updated, somebody is editing it.',
+				'%s projects not updated, somebody is editing them.',
+				$bulk_counts['locked'],
+				'suffice-toolkit'
+			),
+
+			/* translators: %s: number of projects permanently deleted */
+			'deleted'   => _n(
+				'%s project permanently deleted.',
+				'%s projects permanently deleted.',
+				$bulk_counts['deleted'],
+				'suffice-toolkit'
+			),
+
+			/* translators: %s: number of projects moved to the trash */
+			'trashed'   => _n(
+				'%s project moved to the Trash.',
+				'%s projects moved to the Trash.',
+				$bulk_counts['trashed'],
+				'suffice-toolkit'
+			),
+
+			/* translators: %s: number of projects restored from the Trash */
+			'untrashed' => _n(
+				'%s project restored from the Trash.',
+				'%s projects restored from the Trash.',
+				$bulk_counts['untrashed'],
+				'suffice-toolkit'
+			),
 		);
 
 		return $bulk_messages;
@@ -91,9 +149,9 @@ class ST_Admin_Post_Types {
 	 */
 	public function enter_title_here( $text, $post ) {
 		switch ( $post->post_type ) {
-			case 'portfolio' :
+			case 'portfolio':
 				$text = __( 'Project name', 'suffice-toolkit' );
-			break;
+				break;
 		}
 
 		return $text;

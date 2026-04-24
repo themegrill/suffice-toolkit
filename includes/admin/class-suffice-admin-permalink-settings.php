@@ -56,7 +56,12 @@ class ST_Admin_Permalink_Settings {
 	public function portfolio_category_slug_input() {
 		$permalinks = get_option( 'suffice_toolkit_permalinks' );
 		?>
-		<input name="suffice_toolkit_portfolio_category_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['category_base'] ) ) echo esc_attr( $permalinks['category_base'] ); ?>" placeholder="<?php echo esc_attr_x( 'portfolio-category', 'slug', 'suffice-toolkit') ?>" />
+		<input name="suffice_toolkit_portfolio_category_slug" type="text" class="regular-text code" value="
+		<?php
+		if ( isset( $permalinks['category_base'] ) ) {
+			echo esc_attr( $permalinks['category_base'] );}
+		?>
+		" placeholder="<?php echo esc_attr_x( 'portfolio-category', 'slug', 'suffice-toolkit' ); ?>" />
 		<?php
 	}
 
@@ -66,7 +71,12 @@ class ST_Admin_Permalink_Settings {
 	public function portfolio_tag_slug_input() {
 		$permalinks = get_option( 'suffice_toolkit_permalinks' );
 		?>
-		<input name="suffice_toolkit_portfolio_tag_slug" type="text" class="regular-text code" value="<?php if ( isset( $permalinks['tag_base'] ) ) echo esc_attr( $permalinks['tag_base'] ); ?>" placeholder="<?php echo esc_attr_x( 'portfolio-tag', 'slug', 'suffice-toolkit' ) ?>" />
+		<input name="suffice_toolkit_portfolio_tag_slug" type="text" class="regular-text code" value="
+		<?php
+		if ( isset( $permalinks['tag_base'] ) ) {
+			echo esc_attr( $permalinks['tag_base'] );}
+		?>
+		" placeholder="<?php echo esc_attr_x( 'portfolio-tag', 'slug', 'suffice-toolkit' ); ?>" />
 		<?php
 	}
 
@@ -74,7 +84,7 @@ class ST_Admin_Permalink_Settings {
 	 * Show the settings.
 	 */
 	public function settings() {
-		echo wpautop( __( 'These settings control the permalinks specifically used for portfolio.', 'suffice-toolkit' ) );
+		echo esc_html( __( 'These settings control the permalinks specifically used for portfolio.', 'suffice-toolkit' ) );
 
 		$permalinks          = get_option( 'suffice_toolkit_permalinks' );
 		$portfolio_permalink = isset( $permalinks['portfolio_base'] ) ? $permalinks['portfolio_base'] : '';
@@ -86,28 +96,29 @@ class ST_Admin_Permalink_Settings {
 		$structures = array(
 			0 => '',
 			1 => '/' . trailingslashit( $base_slug ),
-			2 => '/' . trailingslashit( $base_slug ) . trailingslashit( '%portfolio_cat%' )
+			2 => '/' . trailingslashit( $base_slug ) . trailingslashit( '%portfolio_cat%' ),
 		);
 		?>
+		<?php wp_nonce_field( 'suffice_toolkit_permalink_action', 'suffice_toolkit_permalink_nonce' ); ?>
 		<table class="form-table suffice-permalink-structure">
 			<tbody>
 				<tr>
-					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[0] ); ?>" class="suffice-tog" <?php checked( $structures[0], $portfolio_permalink ); ?> /> <?php _e( 'Default', 'suffice-toolkit' ); ?></label></th>
+					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[0] ); ?>" class="suffice-tog" <?php checked( $structures[0], $portfolio_permalink ); ?> /> <?php esc_html_e( 'Default', 'suffice-toolkit' ); ?></label></th>
 					<td><code class="default-example"><?php echo esc_html( home_url() ); ?>/?portfolio=sample-portfolio</code> <code class="non-default-example"><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $portfolio_base ); ?>/sample-portfolio/</code></td>
 				</tr>
 				<tr>
-					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[1] ); ?>" class="suffice-tog" <?php checked( $structures[1], $portfolio_permalink ); ?> /> <?php _e( 'Project base', 'suffice-toolkit' ); ?></label></th>
+					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[1] ); ?>" class="suffice-tog" <?php checked( $structures[1], $portfolio_permalink ); ?> /> <?php esc_html_e( 'Project base', 'suffice-toolkit' ); ?></label></th>
 					<td><code><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $base_slug ); ?>/sample-portfolio/</code></td>
 				</tr>
 				<tr>
-					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[2] ); ?>" class="suffice-tog" <?php checked( $structures[2], $portfolio_permalink ); ?> /> <?php _e( 'Project based category', 'suffice-toolkit' ); ?></label></th>
+					<th><label><input name="portfolio_permalink" type="radio" value="<?php echo esc_attr( $structures[2] ); ?>" class="suffice-tog" <?php checked( $structures[2], $portfolio_permalink ); ?> /> <?php esc_html_e( 'Project based category', 'suffice-toolkit' ); ?></label></th>
 					<td><code><?php echo esc_html( home_url() ); ?>/<?php echo esc_html( $base_slug ); ?>/portfolio-category/sample-portfolio/</code></td>
 				</tr>
 				<tr>
 					<th><label><input name="portfolio_permalink" id="suffice_toolkit_custom_selection" type="radio" value="custom" class="tog" <?php checked( in_array( $portfolio_permalink, $structures ), false ); ?> />
-						<?php _e( 'Custom Base', 'suffice-toolkit' ); ?></label></th>
+						<?php esc_html_e( 'Custom Base', 'suffice-toolkit' ); ?></label></th>
 					<td>
-						<input name="portfolio_permalink_structure" id="suffice_toolkit_permalink_structure" type="text" value="<?php echo esc_attr( $portfolio_permalink ); ?>" class="regular-text code"> <span class="description"><?php _e( 'Enter a custom base to use. A base <strong>must</strong> be set or WordPress will use default instead.', 'suffice-toolkit' ); ?></span>
+						<input name="portfolio_permalink_structure" id="suffice_toolkit_permalink_structure" type="text" value="<?php echo esc_attr( $portfolio_permalink ); ?>" class="regular-text code"> <span class="description"><?php esc_html_e( 'Enter a custom base to use. A base <strong>must</strong> be set or WordPress will use default instead.', 'suffice-toolkit' ); ?></span>
 					</td>
 				</tr>
 			</tbody>
@@ -144,9 +155,16 @@ class ST_Admin_Permalink_Settings {
 		if ( ! is_admin() ) {
 			return;
 		}
-
 		// We need to save the options ourselves; settings api does not trigger save for the permalinks page.
 		if ( isset( $_POST['permalink_structure'] ) ) {
+			if ( ! isset( $_POST['suffice_toolkit_permalink_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['suffice_toolkit_permalink_nonce'] ) ), 'suffice_toolkit_permalink_action' ) ) {
+				wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+
 			$permalinks = get_option( 'suffice_toolkit_permalinks' );
 
 			if ( ! $permalinks ) {
