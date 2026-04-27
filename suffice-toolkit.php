@@ -104,7 +104,7 @@ if ( ! class_exists( 'SufficeToolkit' ) ) :
 		 */
 		private function define( $name, $value ) {
 			if ( ! defined( $name ) ) {
-				define( $name, $value );
+				define( $name, $value ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.VariableConstantNameFound
 			}
 		}
 
@@ -155,7 +155,7 @@ if ( ! class_exists( 'SufficeToolkit' ) ) :
 		 *      - WP_LANG_DIR/plugins/suffice-toolkit-LOCALE.mo
 		 */
 		public function load_plugin_textdomain() {
-			$locale = apply_filters( 'plugin_locale', get_locale(), 'suffice-toolkit' );
+			$locale = apply_filters( 'plugin_locale', get_locale(), 'suffice-toolkit' ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 			load_textdomain( 'suffice-toolkit', WP_LANG_DIR . '/suffice-toolkit/suffice-toolkit-' . $locale . '.mo' );
 			load_plugin_textdomain( 'suffice-toolkit', false, plugin_basename( __DIR__ ) . '/i18n/languages' );
@@ -218,7 +218,7 @@ endif;
  * @since  1.0
  * @return SufficeToolkit
  */
-function ST() {
+function ST() { //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 	return SufficeToolkit::instance();
 }
 

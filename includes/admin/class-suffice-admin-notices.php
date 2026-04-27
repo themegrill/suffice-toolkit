@@ -100,11 +100,11 @@ class ST_Admin_Notices {
 	public static function hide_notices() {
 		if ( isset( $_GET['suffice-toolkit-hide-notice'] ) && isset( $_GET['_suffice_toolkit_notice_nonce'] ) ) {
 			if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_suffice_toolkit_notice_nonce'] ) ), 'suffice_toolkit_hide_notices_nonce' ) ) {
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
 			}
 
 			if ( ! current_user_can( 'manage_suffice_toolkit' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
 			}
 
 			$hide_notice = sanitize_text_field( wp_unslash( $_GET['suffice-toolkit-hide-notice'] ) );
@@ -165,8 +165,21 @@ class ST_Admin_Notices {
 	 */
 	public static function update_notice() {
 		if ( version_compare( get_option( 'suffice_toolkit_db_version' ), ST_VERSION, '<' ) ) {
-			$updater = new ST_Background_Updater();
+			$updater = new \ST_Background_Updater();
 			if ( $updater->is_updating() || ! empty( $_GET['do_update_suffice_toolkit'] ) ) {
+				if ( ! current_user_can( 'manage_options' ) ) {
+					wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
+				}
+
+				if (
+				! isset( $_GET['_wpnonce'] ) ||
+				! wp_verify_nonce(
+					sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ),
+					'suffice_toolkit_update'
+				)
+				) {
+					wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
+				}
 				include 'views/html-notice-updating.php';
 			} else {
 				include 'views/html-notice-update.php';

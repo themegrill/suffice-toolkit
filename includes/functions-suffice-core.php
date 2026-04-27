@@ -23,7 +23,7 @@ require 'functions-suffice-portfolio.php';
  * is_suffice_pro_active - Check if Suffice Pro is active.
  * @return bool
  */
-function is_suffice_pro_active() {
+function is_suffice_pro_active() { //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 	return false !== strpos( get_option( 'template' ), 'suffice-pro' );
 }
 
@@ -354,7 +354,7 @@ class Suffice_Walker_CategoryDropdown extends Walker_CategoryDropdown {
 	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
 		$pad = str_repeat( '&nbsp;', $depth * 3 );
 
-		$cat_name = apply_filters( 'list_cats', $category->name, $category );
+		$cat_name = apply_filters( 'list_cats', $category->name, $category ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		$output  .= "<option class=\"level-{$depth}\" value=\"{$category->term_id}\"";
 
 		if ( is_array( $args['selected'] ) ) {

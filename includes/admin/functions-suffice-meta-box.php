@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function suffice_toolkit_wp_text_input( $field ) {
 	global $thepostid, $post;
 
-	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
+	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid; //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$field['placeholder']   = isset( $field['placeholder'] ) ? $field['placeholder'] : '';
 	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'short';
 	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
@@ -69,7 +69,7 @@ function suffice_toolkit_wp_text_input( $field ) {
 function suffice_toolkit_wp_hidden_input( $field ) {
 	global $thepostid, $post;
 
-	$thepostid      = empty( $thepostid ) ? $post->ID : $thepostid;
+	$thepostid      = empty( $thepostid ) ? $post->ID : $thepostid; //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$field['value'] = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 	$field['class'] = isset( $field['class'] ) ? $field['class'] : '';
 
@@ -83,7 +83,7 @@ function suffice_toolkit_wp_hidden_input( $field ) {
 function suffice_toolkit_wp_textarea_input( $field ) {
 	global $thepostid, $post;
 
-	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
+	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid; //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$field['placeholder']   = isset( $field['placeholder'] ) ? $field['placeholder'] : '';
 	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'short';
 	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
@@ -120,7 +120,7 @@ function suffice_toolkit_wp_textarea_input( $field ) {
 function suffice_toolkit_wp_checkbox( $field ) {
 	global $thepostid, $post;
 
-	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
+	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid; //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'checkbox';
 	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
 	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
@@ -159,7 +159,7 @@ function suffice_toolkit_wp_checkbox( $field ) {
 function suffice_toolkit_wp_select( $field ) {
 	global $thepostid, $post;
 
-	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
+	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid; //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'select short';
 	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
 	$field['desc_side']     = isset( $field['desc_side'] ) ? $field['desc_side'] : false;
@@ -218,7 +218,7 @@ function suffice_toolkit_wp_select( $field ) {
 function suffice_toolkit_wp_radio( $field ) {
 	global $thepostid, $post;
 
-	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
+	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid; //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	$field['class']         = isset( $field['class'] ) ? $field['class'] : 'select short';
 	$field['style']         = isset( $field['style'] ) ? $field['style'] : '';
 	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';

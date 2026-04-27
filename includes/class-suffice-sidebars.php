@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * ST_Sidebars Class
  */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class ST_Sidebars {
 
 	/**
@@ -91,14 +92,14 @@ class ST_Sidebars {
 	public function add_custom_sidebars() {
 		if ( ! empty( $_POST['suffice-toolkit-add-sidebar'] ) && isset( $_POST['_suffice_toolkit_sidebar_nonce'] ) ) {
 			if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_suffice_toolkit_sidebar_nonce'] ) ), 'suffice_toolkit_add_sidebar' ) ) {
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
 			}
 
-			$sidebar_name = suffice_clean( $_POST['suffice-toolkit-add-sidebar'] );
+			$sidebar_name = suffice_clean( $_POST['suffice-toolkit-add-sidebar'] ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- unslash and sanitized in suffice_clean()
 
 			self::add_sidebar( self::validate_sidebar_name( $sidebar_name ) );
 			wp_safe_redirect( admin_url( 'widgets.php' ) );

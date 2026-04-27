@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * ST_Meta_Box_Layout_Data Class
  */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class ST_Meta_Box_Layout_Data {
 
 	/**
@@ -146,11 +147,11 @@ class ST_Meta_Box_Layout_Data {
 	 */
 	public static function save( $post_id ) {
 		if ( ! isset( $_POST['suffice_toolkit_meta_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['suffice_toolkit_meta_nonce'] ) ), 'suffice_toolkit_save_data' ) ) {
-			wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
 		}
 
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
-			wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
 		}
 
 		$layout_post_meta = array( 'suffice_layout', 'suffice_sidebar', 'suffice_footer', 'suffice_transparency', 'suffice_top_sidebar_position' );

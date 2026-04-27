@@ -15,7 +15,7 @@ $suffice_toolkit_max_field_entries = count( (array) $value ) >= apply_filters( '
 	<p><label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo esc_html( $setting['label'] ); ?></label></p>
 	<ul class="tg-widget-repeater-field-items" data-widget_id="<?php echo esc_attr( $this->id ); ?>">
 		<?php if ( ! empty( $value ) ) : ?>
-			<?php foreach ( $value as $field_key => $field ) : ?>
+			<?php foreach ( $value as $field_key => $field ) : //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound ?>
 				<li class="tg-widget-accordion-item" data-id="<?php echo esc_attr( $field_key ); ?>">
 					<div class="accordion-top">
 						<div class="accordion-title-action"><a class="accordion-action" href="#available-fields"></a></div>

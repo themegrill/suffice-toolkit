@@ -195,7 +195,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 
 			if ( is_multisite() ) {
 
-				$count = $wpdb->get_var(
+				$count = $wpdb->get_var( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 					$wpdb->prepare(
 						"
 				SELECT COUNT(*)
@@ -209,7 +209,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 				return ( $count > 0 ) ? false : true;
 			}
 
-			$count = $wpdb->get_var(
+			$count = $wpdb->get_var( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->prepare(
 					"
 			SELECT COUNT(*)
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 			$this->start_time = time(); // Set start time of current process.
 
 			$lock_duration = ( property_exists( $this, 'queue_lock_time' ) ) ? $this->queue_lock_time : 60; // 1 minute
-			$lock_duration = apply_filters( $this->identifier . '_queue_lock_time', $lock_duration );
+			$lock_duration = apply_filters( $this->identifier . '_queue_lock_time', $lock_duration ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 
 			set_site_transient( $this->identifier . '_process_lock', microtime(), $lock_duration );
 		}
@@ -279,7 +279,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 
 			if ( is_multisite() ) {
 
-				$query = $wpdb->get_row(
+				$query = $wpdb->get_row( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 					$wpdb->prepare(
 						"
 						SELECT *
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 				return $batch;
 			}
 
-			$query = $wpdb->get_row(
+			$query = $wpdb->get_row( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->prepare(
 					"
 					SELECT *
@@ -389,7 +389,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 				$return = true;
 			}
 
-			return apply_filters( $this->identifier . '_memory_exceeded', $return );
+			return apply_filters( $this->identifier . '_memory_exceeded', $return ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 		}
 
 		/**
@@ -422,14 +422,14 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		 * @return bool
 		 */
 		protected function time_exceeded() {
-			$finish = $this->start_time + apply_filters( $this->identifier . '_default_time_limit', 20 ); // 20 seconds
+			$finish = $this->start_time + apply_filters( $this->identifier . '_default_time_limit', 20 ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 			$return = false;
 
 			if ( time() >= $finish ) {
 				$return = true;
 			}
 
-			return apply_filters( $this->identifier . '_time_exceeded', $return );
+			return apply_filters( $this->identifier . '_time_exceeded', $return ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 		}
 
 		/**
@@ -451,10 +451,10 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		 * @return mixed
 		 */
 		public function schedule_cron_healthcheck( $schedules ) {
-			$interval = apply_filters( $this->identifier . '_cron_interval', 5 );
+			$interval = apply_filters( $this->identifier . '_cron_interval', 5 ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 
 			if ( property_exists( $this, 'cron_interval' ) ) {
-				$interval = apply_filters( $this->identifier . '_cron_interval', $this->cron_interval_identifier );
+				$interval = apply_filters( $this->identifier . '_cron_interval', $this->cron_interval_identifier ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 			}
 
 			// Adds every 5 minutes to the existing schedules.

@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * ST_Meta_Box_Portfolio_Data Class
  */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class ST_Meta_Box_Portfolio_Data {
 
 	/**
@@ -124,15 +125,15 @@ class ST_Meta_Box_Portfolio_Data {
 	 */
 	public static function save( $post_id ) {
 		if ( ! isset( $_POST['suffice_toolkit_meta_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['suffice_toolkit_meta_nonce'] ) ), 'suffice_toolkit_save_data' ) ) {
-			wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
 		}
 
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
-			wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
 		}
 
 		// Add/replace data to array
-		$layout_type = isset( $_POST['layout_type'] ) ? suffice_clean( $_POST['layout_type'] ) : '';
+		$layout_type = isset( $_POST['layout_type'] ) ? suffice_clean( $_POST['layout_type'] ) : ''; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- unslash and sanitized in suffice_clean()
 		$layout_desc = isset( $_POST['layout_desc'] ) ? sanitize_textarea_field( wp_unslash( $_POST['layout_desc'] ) ) : '';
 		$_example_cb = isset( $_POST['_example_cb'] ) ? 'yes' : 'no';
 

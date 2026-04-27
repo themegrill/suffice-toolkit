@@ -64,13 +64,35 @@ class ST_Install {
 	 * This function is hooked into admin_init to affect admin only.
 	 */
 	public static function install_actions() {
+		if (
+		empty( $_GET['do_update_suffice_toolkit'] ) &&
+		empty( $_GET['force_update_suffice_toolkit'] )
+		) {
+			return;
+		}
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
+		}
+
+		if (
+		! isset( $_GET['_wpnonce'] ) ||
+		! wp_verify_nonce(
+			sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ),
+			'suffice_toolkit_update'
+		)
+		) {
+			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
+		}
+
 		if ( ! empty( $_GET['do_update_suffice_toolkit'] ) ) {
 			self::update();
-			ST_Admin_Notices::add_notice( 'update' );
+			\ST_Admin_Notices::add_notice( 'update' );
 		}
 		if ( ! empty( $_GET['force_update_suffice_toolkit'] ) ) {
-			do_action( 'wp_suffice_updater_cron' );
+			do_action( 'wp_suffice_updater_cron' ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			wp_safe_redirect( admin_url( 'themes.php' ) );
+			exit;
 		}
 	}
 
@@ -88,7 +110,7 @@ class ST_Install {
 		set_transient( 'st_installing', 'yes', MINUTE_IN_SECONDS * 10 );
 
 		if ( ! defined( 'ST_INSTALLING' ) ) {
-			define( 'ST_INSTALLING', true );
+			define( 'ST_INSTALLING', true ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 		}
 
 		// Ensure needed classes are loaded.
@@ -136,7 +158,7 @@ class ST_Install {
 			AND a.option_name NOT LIKE %s
 			AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
 			AND b.option_value < %d";
-		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) ); //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) ); //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 		// Trigger action
 		do_action( 'suffice_toolkit_installed' );

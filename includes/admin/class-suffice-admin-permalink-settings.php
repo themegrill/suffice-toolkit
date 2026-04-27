@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * ST_Admin_Permalink_Settings Class
  */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class ST_Admin_Permalink_Settings {
 
 	/**
@@ -158,11 +159,11 @@ class ST_Admin_Permalink_Settings {
 		// We need to save the options ourselves; settings api does not trigger save for the permalinks page.
 		if ( isset( $_POST['permalink_structure'] ) ) {
 			if ( ! isset( $_POST['suffice_toolkit_permalink_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['suffice_toolkit_permalink_nonce'] ) ), 'suffice_toolkit_permalink_action' ) ) {
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
 			}
 
 			$permalinks = get_option( 'suffice_toolkit_permalinks' );
@@ -171,15 +172,25 @@ class ST_Admin_Permalink_Settings {
 				$permalinks = array();
 			}
 
-			$permalinks['category_base'] = suffice_sanitize_permalink( trim( $_POST['suffice_toolkit_portfolio_category_slug'] ) );
-			$permalinks['tag_base']      = suffice_sanitize_permalink( trim( $_POST['suffice_toolkit_portfolio_tag_slug'] ) );
+			$permalinks['category_base'] = isset( $_POST['suffice_toolkit_portfolio_category_slug'] )
+			? suffice_sanitize_permalink( wp_unslash( $_POST['suffice_toolkit_portfolio_category_slug'] ) ) //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized in suffice_sanitize_permalink()
+			: '';
+
+			$permalinks['tag_base'] = isset( $_POST['suffice_toolkit_portfolio_tag_slug'] )
+			? suffice_sanitize_permalink( wp_unslash( $_POST['suffice_toolkit_portfolio_tag_slug'] ) ) //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized in suffice_sanitize_permalink()
+			: '';
 
 			// Portfolio base.
-			$portfolio_permalink = isset( $_POST['portfolio_permalink'] ) ? suffice_clean( $_POST['portfolio_permalink'] ) : '';
+			$portfolio_permalink = isset( $_POST['portfolio_permalink'] ) ? suffice_clean( $_POST['portfolio_permalink'] ) : ''; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- unslash and sanitized in suffice_clean()
 
 			if ( 'custom' === $portfolio_permalink ) {
 				if ( isset( $_POST['portfolio_permalink_structure'] ) ) {
-					$portfolio_permalink = preg_replace( '#/+#', '/', '/' . str_replace( '#', '', trim( $_POST['portfolio_permalink_structure'] ) ) );
+
+					$structure = sanitize_text_field(
+						wp_unslash( $_POST['portfolio_permalink_structure'] )
+					);
+
+					$portfolio_permalink = preg_replace( '#/+#', '/', '/' . str_replace( '#', '', trim( $structure ) ) );
 				} else {
 					$portfolio_permalink = '/';
 				}

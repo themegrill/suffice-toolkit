@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Suffice Toolkit 1.1.0\n"
 "Report-Msgid-Bugs-To: themegrill@gmail.com\n"
-"POT-Creation-Date: 2026-04-24 03:09:17+00:00\n"
+"POT-Creation-Date: 2026-04-27 11:00:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -107,56 +107,57 @@ msgid ""
 msgstr ""
 
 #: includes/admin/class-suffice-admin-notices.php:103
-#: includes/admin/class-suffice-admin-permalink-settings.php:161
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:149
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:127
-#: includes/class-suffice-sidebars.php:94
+#: includes/admin/class-suffice-admin-notices.php:181
+#: includes/admin/class-suffice-admin-permalink-settings.php:162
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:150
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:128
+#: includes/class-suffice-install.php:85 includes/class-suffice-sidebars.php:95
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
 #: includes/admin/class-suffice-admin-notices.php:107
-#: includes/admin/class-suffice-admin-permalink-settings.php:165
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:153
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:131
-#: includes/class-suffice-sidebars.php:98 suffice-toolkit.php:57
-#: suffice-toolkit.php:65
-msgid "Cheatin&#8217; huh?"
+#: includes/admin/class-suffice-admin-notices.php:171
+#: includes/admin/class-suffice-admin-permalink-settings.php:166
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:154
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:132
+#: includes/class-suffice-install.php:75 includes/class-suffice-sidebars.php:99
+msgid "Cheatin' huh?"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:34
+#: includes/admin/class-suffice-admin-permalink-settings.php:35
 msgid "Portfolio Permalinks"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:39
+#: includes/admin/class-suffice-admin-permalink-settings.php:40
 msgid "Portfolio category base"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:46
+#: includes/admin/class-suffice-admin-permalink-settings.php:47
 msgid "Portfolio tag base"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:87
+#: includes/admin/class-suffice-admin-permalink-settings.php:88
 msgid "These settings control the permalinks specifically used for portfolio."
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:106
+#: includes/admin/class-suffice-admin-permalink-settings.php:107
 #: includes/widgets/class-suffice-widget-slider.php:83
 msgid "Default"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:110
+#: includes/admin/class-suffice-admin-permalink-settings.php:111
 msgid "Project base"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:114
+#: includes/admin/class-suffice-admin-permalink-settings.php:115
 msgid "Project based category"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:119
+#: includes/admin/class-suffice-admin-permalink-settings.php:120
 msgid "Custom Base"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:121
+#: includes/admin/class-suffice-admin-permalink-settings.php:122
 msgid ""
 "Enter a custom base to use. A base <strong>must</strong> be set or "
 "WordPress will use default instead."
@@ -270,107 +271,107 @@ msgstr ""
 msgid "Thank you for creating with Suffice Toolkit."
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:41
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:42
 msgid "Layout Settings"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:43
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:44
 msgid "Default Layout"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:44
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:45
 msgid "Left Sidebar"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:45
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:46
 msgid "Right Sidebar"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:46
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:47
 msgid "Full Width"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:47
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:48
 msgid "Full Width Center"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:52
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:53
 msgid "Select the specific layout for this entry."
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:64
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:65
 msgid "Sidebar Settings"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:68
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:69
 msgid "Choose a custom sidebar for this entry."
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:78
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:79
 msgid "Footer Settings"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:80
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:81
 msgid "Default Socket and Widgets"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:81
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:82
 msgid "Both Socket and Widgets"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:82
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:83
 msgid "Only Widgets (No Socket)"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:83
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:84
 msgid "Only Socket (No Widgets)"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:84
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:85
 msgid "Hide Socket and Widgets"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:89
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:90
 msgid "Display the socket and footer widgets?"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:101
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:102
 msgid "Header Transparency"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:103
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:104
 msgid "No Transparency"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:104
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:105
 msgid "Transparent Header"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:109
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:110
 msgid "Header transparency options on this page."
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:121
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:122
 msgid "Top Sidebar Position"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:123
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:124
 msgid "None"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:124
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:125
 msgid "Above Header"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:125
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:126
 msgid "Below Header"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:130
+#: includes/admin/meta-boxes/class-suffice-meta-box-layout-data.php:131
 msgid "Top Sidebar Position options on this page."
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:36
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:37
 #: includes/widgets/class-suffice-widget-blog.php:43
 #: includes/widgets/class-suffice-widget-blog.php:54
 #: includes/widgets/class-suffice-widget-blog.php:66
@@ -422,32 +423,32 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:41
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:107
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:42
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:108
 msgid "Description"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:68
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:69
 msgid "Layout Type"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:70
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:71
 msgid "One Column"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:71
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:72
 msgid "Two Column"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:74
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:75
 msgid "Define whether or not the entire layout should be one or two column based."
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:87
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:88
 msgid "Sample Checkbox"
 msgstr ""
 
-#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:88
+#: includes/admin/meta-boxes/class-suffice-meta-box-portfolio-data.php:89
 msgid "Enable example checkbox."
 msgstr ""
 
@@ -477,11 +478,11 @@ msgstr ""
 msgid "We need to update your site's database to the latest version."
 msgstr ""
 
-#: includes/admin/views/html-notice-update.php:13
+#: includes/admin/views/html-notice-update.php:22
 msgid "Run the updater"
 msgstr ""
 
-#: includes/admin/views/html-notice-update.php:17
+#: includes/admin/views/html-notice-update.php:26
 msgid ""
 "It is strongly recommended that you backup your database before proceeding. "
 "Are you sure you wish to run the updater now?"
@@ -497,23 +498,23 @@ msgstr ""
 msgid "Your database is being updated in the background."
 msgstr ""
 
-#: includes/admin/views/html-notice-updating.php:12
+#: includes/admin/views/html-notice-updating.php:21
 msgid "Taking a while? Click here to run it now."
 msgstr ""
 
-#: includes/class-suffice-install.php:280
+#: includes/class-suffice-install.php:302
 msgid "View Suffice Toolkit Documentation"
 msgstr ""
 
-#: includes/class-suffice-install.php:280
+#: includes/class-suffice-install.php:302
 msgid "Docs"
 msgstr ""
 
-#: includes/class-suffice-install.php:281
+#: includes/class-suffice-install.php:303
 msgid "Visit Free Customer Support Forum"
 msgstr ""
 
-#: includes/class-suffice-install.php:281
+#: includes/class-suffice-install.php:303
 msgid "Free Support"
 msgstr ""
 
@@ -714,7 +715,7 @@ msgstr ""
 msgid "This is where you can add new portfolio items to your project."
 msgstr ""
 
-#: includes/class-suffice-sidebars.php:130
+#: includes/class-suffice-sidebars.php:131
 #. translators: %s: widget area name
 msgid "Custom Widget Area of the site - %s"
 msgstr ""
@@ -1365,6 +1366,10 @@ msgstr ""
 msgid "Title Position"
 msgstr ""
 
+#: suffice-toolkit.php:57 suffice-toolkit.php:65
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
 #: templates/content-widget-blog.php:105 templates/content-widget-blog.php:147
 #: templates/content-widget-featured-posts.php:120
 #. translators: %s: post title
@@ -1459,19 +1464,19 @@ msgctxt "enhanced select"
 msgid "Searching&hellip;"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:64
+#: includes/admin/class-suffice-admin-permalink-settings.php:65
 #: includes/class-suffice-post-types.php:74
 msgctxt "slug"
 msgid "portfolio-category"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:79
+#: includes/admin/class-suffice-admin-permalink-settings.php:80
 #: includes/class-suffice-post-types.php:111
 msgctxt "slug"
 msgid "portfolio-tag"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:189
+#: includes/admin/class-suffice-admin-permalink-settings.php:200
 #: includes/class-suffice-post-types.php:131
 msgctxt "slug"
 msgid "portfolio"
@@ -1482,12 +1487,12 @@ msgctxt "slug"
 msgid "uncategorized"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:93
+#: includes/admin/class-suffice-admin-permalink-settings.php:94
 msgctxt "default-slug"
 msgid "project"
 msgstr ""
 
-#: includes/admin/class-suffice-admin-permalink-settings.php:94
+#: includes/admin/class-suffice-admin-permalink-settings.php:95
 msgctxt "default-slug"
 msgid "portfolio"
 msgstr ""

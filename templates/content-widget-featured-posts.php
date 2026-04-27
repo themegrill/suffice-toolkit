@@ -125,7 +125,7 @@ if ( 'latest' === $suffice_toolkit_source ) {
 						</header>
 
 						<div class="entry-content">
-							<p><?php echo esc_attr( wp_trim_words( get_the_excerpt(), $num_words = 10, $more = null ) ); ?></p>
+							<p><?php echo esc_attr( wp_trim_words( get_the_excerpt(), $num_words = 10, $more = null ) ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound, WordPress.WP.GlobalVariablesOverride.Prohibited ?></p>
 						</div>
 					</div>
 

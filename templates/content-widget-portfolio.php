@@ -78,11 +78,11 @@ $suffice_toolkit_column     = isset( $instance['column'] ) ? $instance['column']
 	<ul class="portfolio-items row <?php echo esc_attr( $suffice_toolkit_style ); ?>">
 
 		<?php
-		$suffice_toolkit_query = new WP_Query(
+		$suffice_toolkit_query = new \WP_Query(
 			array(
 				'post_type'      => 'portfolio',
 				'posts_per_page' => $suffice_toolkit_number,
-				'tax_query'      => array(
+				'tax_query'      => array( //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 					array(
 						'taxonomy' => 'portfolio_cat',
 						'field'    => 'id',
