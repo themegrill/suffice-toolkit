@@ -15,15 +15,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Include core functions (available in both admin and frontend).
-include( 'functions-suffice-deprecated.php' );
-include( 'functions-suffice-formatting.php' );
-include( 'functions-suffice-portfolio.php' );
+require 'functions-suffice-deprecated.php';
+require 'functions-suffice-formatting.php';
+require 'functions-suffice-portfolio.php';
 
 /**
  * is_suffice_pro_active - Check if Suffice Pro is active.
  * @return bool
  */
-function is_suffice_pro_active() {
+function is_suffice_pro_active() { //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 	return false !== strpos( get_option( 'template' ), 'suffice-pro' );
 }
 
@@ -53,13 +53,20 @@ function suffice_toolkit_print_js() {
 		$suffice_toolkit_queued_js = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", $suffice_toolkit_queued_js );
 		$suffice_toolkit_queued_js = str_replace( "\r", '', $suffice_toolkit_queued_js );
 
-		$js = "<!-- Suffice Toolkit JavaScript -->\n<script type=\"text/javascript\">\njQuery(function($) { $suffice_toolkit_queued_js });\n</script>\n";
+		$js = "/* Suffice Toolkit JavaScript */\n<script type=\"text/javascript\">\njQuery(function($) { {$suffice_toolkit_queued_js} });\n</script>\n";
 
 		/**
 		 * social_icons_queued_js filter.
 		 * @param string $js JavaScript code.
 		 */
-		echo apply_filters( 'suffice_toolkit_queued_js', $js );
+		echo wp_kses(
+			apply_filters( 'suffice_toolkit_queued_js', $js ),
+			array(
+				'script' => array(
+					'type' => true,
+				),
+			)
+		);
 
 		unset( $suffice_toolkit_queued_js );
 	}
@@ -123,7 +130,7 @@ function suffice_get_template( $template_name, $args = array(), $template_path =
 	$located = suffice_locate_template( $template_name, $template_path, $default_path );
 
 	if ( ! file_exists( $located ) ) {
-		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $located ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', esc_html( $located ) ), '1.0' );
 		return;
 	}
 
@@ -132,7 +139,7 @@ function suffice_get_template( $template_name, $args = array(), $template_path =
 
 	do_action( 'suffice_toolkit_before_template_part', $template_name, $template_path, $located, $args );
 
-	include( $located );
+	include $located;
 
 	do_action( 'suffice_toolkit_after_template_part', $template_name, $template_path, $located, $args );
 }
@@ -186,7 +193,7 @@ if ( ! function_exists( 'suffice_get_google_fonts' ) ) {
 	 * @return array
 	 */
 	function suffice_get_google_fonts() {
-		return apply_filters( 'suffice_get_google_fonts', include( ST()->plugin_path() . '/i18n/google-fonts.php' ) );
+		return apply_filters( 'suffice_get_google_fonts', include ST()->plugin_path() . '/i18n/google-fonts.php' );
 	}
 }
 
@@ -197,7 +204,7 @@ if ( ! function_exists( 'suffice_get_fontawesome_icons' ) ) {
 	 * @return array
 	 */
 	function suffice_get_fontawesome_icons() {
-		return apply_filters( 'suffice_get_fontawesome_icons', include( ST()->plugin_path() . '/i18n/fontawesome.php' ) );
+		return apply_filters( 'suffice_get_fontawesome_icons', include ST()->plugin_path() . '/i18n/fontawesome.php' );
 	}
 }
 
@@ -207,7 +214,7 @@ if ( ! function_exists( 'suffice_get_fontawesome_icons' ) ) {
  */
 function suffice_get_column_class( $column ) {
 	$class = '';
-	switch ($column) {
+	switch ( $column ) {
 		case '1':
 			$class = 'col-md-12';
 			break;
@@ -242,23 +249,23 @@ function suffice_get_column_class( $column ) {
  * @return string List of Terms joined with ', '
  */
 
-function suffice_get_terms_list($id, $taxonomy) {
+function suffice_get_terms_list( $id, $taxonomy ) {
 
 	$terms = get_the_terms( $id, $taxonomy );
 
 	if ( $terms && ! is_wp_error( $terms ) ) :
 
-    $joined_terms_array = array();
+		$joined_terms_array = array();
 
-    foreach ( $terms as $term ) {
-        $joined_terms_array[] = $term->name;
-    }
+		foreach ( $terms as $term ) {
+			$joined_terms_array[] = $term->name;
+		}
 
-    $joined_terms_string = join( ", ", $joined_terms_array );
+		$joined_terms_string = join( ', ', $joined_terms_array );
 
-    endif;
+	endif;
 
-    return $joined_terms_string;
+	return $joined_terms_string;
 }
 
 /**
@@ -267,8 +274,8 @@ function suffice_get_terms_list($id, $taxonomy) {
  * @return string First Category from Loop
  */
 
-function suffice_get_first_category_name($source, $cat_id) {
-	if( $source == 'latest' ) {
+function suffice_get_first_category_name( $source, $cat_id ) {
+	if ( $source == 'latest' ) {
 		$category      = get_the_category();
 		$category_name = $category[0]->cat_name;
 	} else {
@@ -284,8 +291,8 @@ function suffice_get_first_category_name($source, $cat_id) {
  * @return string First Link from Loop
  */
 
-function suffice_get_first_category_link($source, $cat_id){
-	$category_name = suffice_get_first_category_name($source, $cat_id);
+function suffice_get_first_category_link( $source, $cat_id ) {
+	$category_name = suffice_get_first_category_name( $source, $cat_id );
 	$category_ID   = get_cat_ID( $category_name );
 	$category_link = get_category_link( $category_ID );
 
@@ -297,8 +304,8 @@ function suffice_get_first_category_link($source, $cat_id){
  *
  * @return int category id
  */
-function suffice_get_first_category_id($source, $cat_id){
-	$category_name = suffice_get_first_category_name($source, $cat_id);
+function suffice_get_first_category_id( $source, $cat_id ) {
+	$category_name = suffice_get_first_category_name( $source, $cat_id );
 	$category_ID   = get_cat_ID( $category_name );
 
 	return $category_ID;
@@ -309,21 +316,25 @@ function suffice_get_first_category_id($source, $cat_id){
  * @return array
  */
 function suffice_get_woocommerce_categories() {
-	$terms = get_terms( array_values ( array(
-		'taxonomy' => 'category',
-		'hide_empty' => true,
-	) ) );
+	$terms = get_terms(
+		array_values(
+			array(
+				'taxonomy'   => 'category',
+				'hide_empty' => true,
+			)
+		)
+	);
 
 	$terms_array     = array();
 	$term_id_array   = array();
 	$term_name_array = array();
 
-	foreach ($terms as $term ) {
+	foreach ( $terms as $term ) {
 		$term_id_array[]   = $term->term_id;
 		$term_name_array[] = $term->name;
 	}
 
-	$terms_array = array_combine($term_id_array, $term_name_array);
+	$terms_array = array_combine( $term_id_array, $term_name_array );
 
 	return $terms_array;
 }
@@ -341,21 +352,22 @@ function suffice_wp_dropdown_cats_multiple( $output, $r ) {
 // This Walker is needed to match more than one selected value
 class Suffice_Walker_CategoryDropdown extends Walker_CategoryDropdown {
 	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
-		 $pad = str_repeat('&nbsp;', $depth * 3);
+		$pad = str_repeat( '&nbsp;', $depth * 3 );
 
-	    $cat_name = apply_filters('list_cats', $category->name, $category);
-	    $output .= "<option class=\"level-{$depth}\" value=\"{$category->term_id}\"";
+		$cat_name = apply_filters( 'list_cats', $category->name, $category ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+		$output  .= "<option class=\"level-{$depth}\" value=\"{$category->term_id}\"";
 
-	    if( is_array( $args['selected'] ) ) {
-		    if ( in_array( $category->term_id, $args['selected'] ) ) {
-		        $output .= ' selected="selected"';
-		    }
+		if ( is_array( $args['selected'] ) ) {
+			if ( in_array( $category->term_id, $args['selected'] ) ) {
+				$output .= ' selected="selected"';
+			}
 		}
 
-	    $output .= '>';
-	    $output .= $pad.$cat_name;
-	    if ( $args['show_count'] )
-	        $output .= "({$category->count})";
-	    $output .= "</option>";
+		$output .= '>';
+		$output .= $pad . $cat_name;
+		if ( $args['show_count'] ) {
+			$output .= "({$category->count})";
+		}
+		$output .= '</option>';
 	}
 }

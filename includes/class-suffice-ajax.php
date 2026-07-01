@@ -55,13 +55,13 @@ class ST_AJAX {
 		check_ajax_referer( 'delete-custom-sidebar', 'security' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			die(-1);
+			die( -1 );
 		}
 
-		$sidebar = suffice_clean( stripslashes( $_POST['sidebar'] ) );
+		$sidebar = isset( $_POST['sidebar'] ) ? suffice_clean( stripslashes( $_POST['sidebar'] ) ) : ''; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- unslash and sanitized in suffice_clean()
 
 		if ( ! empty( $sidebar ) ) {
-			ST_Sidebars::remove_sidebar( $sidebar );
+			\ST_Sidebars::remove_sidebar( $sidebar );
 			wp_send_json_success( array( $sidebar ) );
 		}
 

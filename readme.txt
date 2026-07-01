@@ -2,8 +2,8 @@
 Contributors: ThemeGrill
 Tags: theme, suffice, toolkit, themegrill
 Requires at least: 4.0
-Tested up to: 6.1
-Stable tag: 1.0.9
+Tested up to: 6.9
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,13 @@ Get free support at https://themegrill.com/support-forum/
 * The plugin currently only supports Suffice theme.
 
 == Changelog ==
+
+== 1.1.0 - 2026-04-24 ==
+* Fix - Security and WordPress guideline compliance issues.
+* Fix - Internationalization and text domain corrections.
+* Fix - Sanitization, validation, and output escaping improvements.
+* Fix - Nonce verification and user capability checks.
+* Fix - Removed remote file calls and enforced local asset usage.
 
 == 1.0.9 - 2022-12-20 ==
 * Tweak - Removed wordpress patch version number

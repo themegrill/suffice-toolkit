@@ -5,6 +5,10 @@
  * @package WP-Background-Processing
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'WP_Background_Process' ) ) {
 
 	/**
@@ -146,7 +150,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		 * @return string
 		 */
 		protected function generate_key( $length = 64 ) {
-			$unique  = md5( microtime() . rand() );
+			$unique  = md5( microtime() . wp_rand() );
 			$prepend = $this->identifier . '_batch_';
 
 			return substr( $prepend . $unique, 0, $length );
@@ -187,21 +191,34 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		protected function is_queue_empty() {
 			global $wpdb;
 
-			$table  = $wpdb->options;
-			$column = 'option_name';
-
-			if ( is_multisite() ) {
-				$table  = $wpdb->sitemeta;
-				$column = 'meta_key';
-			}
-
 			$key = $this->identifier . '_batch_%';
 
-			$count = $wpdb->get_var( $wpdb->prepare( "
+			if ( is_multisite() ) {
+
+				$count = $wpdb->get_var( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+					$wpdb->prepare(
+						"
+				SELECT COUNT(*)
+				FROM {$wpdb->sitemeta}
+				WHERE meta_key LIKE %s
+				",
+						$key
+					)
+				);
+
+				return ( $count > 0 ) ? false : true;
+			}
+
+			$count = $wpdb->get_var( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+				$wpdb->prepare(
+					"
 			SELECT COUNT(*)
-			FROM {$table}
-			WHERE {$column} LIKE %s
-		", $key ) );
+			FROM {$wpdb->options}
+			WHERE option_name LIKE %s
+			",
+					$key
+				)
+			);
 
 			return ( $count > 0 ) ? false : true;
 		}
@@ -232,7 +249,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 			$this->start_time = time(); // Set start time of current process.
 
 			$lock_duration = ( property_exists( $this, 'queue_lock_time' ) ) ? $this->queue_lock_time : 60; // 1 minute
-			$lock_duration = apply_filters( $this->identifier . '_queue_lock_time', $lock_duration );
+			$lock_duration = apply_filters( $this->identifier . '_queue_lock_time', $lock_duration ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 
 			set_site_transient( $this->identifier . '_process_lock', microtime(), $lock_duration );
 		}
@@ -258,31 +275,54 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		protected function get_batch() {
 			global $wpdb;
 
-			$table        = $wpdb->options;
-			$column       = 'option_name';
-			$key_column   = 'option_id';
-			$value_column = 'option_value';
-
-			if ( is_multisite() ) {
-				$table        = $wpdb->sitemeta;
-				$column       = 'meta_key';
-				$key_column   = 'meta_id';
-				$value_column = 'meta_value';
-			}
-
 			$key = $this->identifier . '_batch_%';
 
-			$query = $wpdb->get_row( $wpdb->prepare( "
-			SELECT *
-			FROM {$table}
-			WHERE {$column} LIKE %s
-			ORDER BY {$key_column} ASC
-			LIMIT 1
-		", $key ) );
+			if ( is_multisite() ) {
+
+				$query = $wpdb->get_row( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+					$wpdb->prepare(
+						"
+						SELECT *
+						FROM {$wpdb->sitemeta}
+						WHERE meta_key LIKE %s
+						ORDER BY meta_id ASC
+						LIMIT 1
+						",
+						$key
+					)
+				);
+
+				if ( ! $query ) {
+					return null;
+				}
+
+				$batch       = new stdClass();
+				$batch->key  = $query->meta_key;
+				$batch->data = maybe_unserialize( $query->meta_value );
+
+				return $batch;
+			}
+
+			$query = $wpdb->get_row( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+				$wpdb->prepare(
+					"
+					SELECT *
+					FROM {$wpdb->options}
+					WHERE option_name LIKE %s
+					ORDER BY option_id ASC
+					LIMIT 1
+					",
+					$key
+				)
+			);
+
+			if ( ! $query ) {
+				return null;
+			}
 
 			$batch       = new stdClass();
-			$batch->key  = $query->$column;
-			$batch->data = maybe_unserialize( $query->$value_column );
+			$batch->key  = $query->option_name;
+			$batch->data = maybe_unserialize( $query->option_value );
 
 			return $batch;
 		}
@@ -349,7 +389,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 				$return = true;
 			}
 
-			return apply_filters( $this->identifier . '_memory_exceeded', $return );
+			return apply_filters( $this->identifier . '_memory_exceeded', $return ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 		}
 
 		/**
@@ -382,14 +422,14 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		 * @return bool
 		 */
 		protected function time_exceeded() {
-			$finish = $this->start_time + apply_filters( $this->identifier . '_default_time_limit', 20 ); // 20 seconds
+			$finish = $this->start_time + apply_filters( $this->identifier . '_default_time_limit', 20 ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 			$return = false;
 
 			if ( time() >= $finish ) {
 				$return = true;
 			}
 
-			return apply_filters( $this->identifier . '_time_exceeded', $return );
+			return apply_filters( $this->identifier . '_time_exceeded', $return ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 		}
 
 		/**
@@ -411,16 +451,20 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		 * @return mixed
 		 */
 		public function schedule_cron_healthcheck( $schedules ) {
-			$interval = apply_filters( $this->identifier . '_cron_interval', 5 );
+			$interval = apply_filters( $this->identifier . '_cron_interval', 5 ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 
 			if ( property_exists( $this, 'cron_interval' ) ) {
-				$interval = apply_filters( $this->identifier . '_cron_interval', $this->cron_interval_identifier );
+				$interval = apply_filters( $this->identifier . '_cron_interval', $this->cron_interval_identifier ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound
 			}
 
 			// Adds every 5 minutes to the existing schedules.
 			$schedules[ $this->identifier . '_cron_interval' ] = array(
 				'interval' => MINUTE_IN_SECONDS * $interval,
-				'display'  => sprintf( __( 'Every %d Minutes', 'suffice-toolkit' ), $interval ),
+				'display'  => sprintf(
+					/* translators: %d: number of minutes */
+					__( 'Every %d Minutes', 'suffice-toolkit' ),
+					$interval
+				),
 			);
 
 			return $schedules;
@@ -483,7 +527,6 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 
 				wp_clear_scheduled_hook( $this->cron_hook_identifier );
 			}
-
 		}
 
 		/**
@@ -499,6 +542,5 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 		 * @return mixed
 		 */
 		abstract protected function task( $item );
-
 	}
 }

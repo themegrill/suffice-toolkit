@@ -19,24 +19,24 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$title     = isset( $instance['tg-title'] ) ? $instance['tg-title'] : '';
-$sub_title = isset( $instance['tg-sub-title'] ) ? $instance['tg-sub-title'] : '';
-$position  = isset( $instance['position'] ) ? $instance['position'] : '';
-$style     = isset( $instance['style'] ) ? $instance['style'] : '';
+$suffice_toolkit_title     = isset( $instance['tg-title'] ) ? $instance['tg-title'] : '';
+$suffice_toolkit_sub_title = isset( $instance['tg-sub-title'] ) ? $instance['tg-sub-title'] : '';
+$suffice_toolkit_position  = isset( $instance['position'] ) ? $instance['position'] : '';
+$suffice_toolkit_style     = isset( $instance['style'] ) ? $instance['style'] : '';
 
 ?>
-<div class="title <?php echo esc_attr( $style . ' ' . $position ); ?>">
-	<h3 class="title-title"><?php echo esc_html( $title ); ?></h3>
+<div class="title <?php echo esc_attr( $suffice_toolkit_style . ' ' . $suffice_toolkit_position ); ?>">
+	<h3 class="title-title"><?php echo esc_html( $suffice_toolkit_title ); ?></h3>
 
-	<?php if ( $sub_title && ! empty( $sub_title ) ) : ?>
-		<p class="sub-title"><?php echo esc_html( $sub_title ); ?></p>
+	<?php if ( $suffice_toolkit_sub_title && ! empty( $suffice_toolkit_sub_title ) ) : ?>
+		<p class="sub-title"><?php echo esc_html( $suffice_toolkit_sub_title ); ?></p>
 	<?php endif ?>
 
-	<?php if ( 'title-ribbon-middle' === $style ) : ?>
+	<?php if ( 'title-ribbon-middle' === $suffice_toolkit_style ) : ?>
 		<hr class="dotted">
 	<?php endif; ?>
 
-	<?php if ( 'title-double-bordered' === $style ) : ?>
+	<?php if ( 'title-double-bordered' === $suffice_toolkit_style ) : ?>
 		<div class="left">
 			<hr class="solid top">
 			<hr class="solid bottom">

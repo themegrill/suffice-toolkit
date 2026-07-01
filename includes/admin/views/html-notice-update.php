@@ -9,8 +9,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div id="message" class="updated suffice-toolkit-message suffice-connect">
-	<p><strong><?php _e( 'SufficeToolkit Data Update', 'suffice-toolkit' ); ?></strong> &#8211; <?php _e( 'We need to update your site\'s database to the latest version.', 'suffice-toolkit' ); ?></p>
-	<p class="submit"><a href="<?php echo esc_url( add_query_arg( 'do_update_suffice_toolkit', 'true', admin_url( 'themes.php' ) ) ); ?>" class="suffice-update-now button-primary"><?php _e( 'Run the updater', 'suffice-toolkit' ); ?></a></p>
+	<p><strong><?php esc_html_e( 'SufficeToolkit Data Update', 'suffice-toolkit' ); ?></strong> &#8211; <?php esc_html_e( 'We need to update your site\'s database to the latest version.', 'suffice-toolkit' ); ?></p>
+	<p class="submit"><a href="
+	<?php
+	echo esc_url(
+		wp_nonce_url(
+			add_query_arg( 'do_update_suffice_toolkit', 'true', admin_url( 'themes.php' ) ),
+			'suffice_toolkit_update'
+		)
+	);
+	?>
+	" class="suffice-update-now button-primary"><?php esc_html_e( 'Run the updater', 'suffice-toolkit' ); ?></a></p>
 </div>
 <script type="text/javascript">
 	jQuery( '.suffice-update-now' ).click( 'click', function() {

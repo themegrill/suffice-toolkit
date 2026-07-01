@@ -19,35 +19,35 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$repeatable_testimonial = isset( $instance['repeatable_testimonial'] ) ? $instance['repeatable_testimonial'] : array();
-$style                  = isset( $instance['style'] ) ? $instance['style'] : '';
-$columns                = isset( $instance['columns'] ) ? $instance['columns'] : '2';
+$suffice_toolkit_repeatable_testimonial = isset( $instance['repeatable_testimonial'] ) ? $instance['repeatable_testimonial'] : array();
+$suffice_toolkit_style                  = isset( $instance['style'] ) ? $instance['style'] : '';
+$suffice_toolkit_columns                = isset( $instance['columns'] ) ? $instance['columns'] : '2';
 
 ?>
 <div class="testimonials-wrapper">
-	<ul class="testimonials-container row <?php echo esc_attr( $style ); ?>">
-		<?php foreach ( $repeatable_testimonial as $testimonial ) { ?>
-		<li class="testimonial-item <?php echo esc_attr( suffice_get_column_class( $columns ) ); ?>">
-			<?php if ( 'testimonials-sayings' === $style ) : ?>
-				<p class="testimonial-content"><?php echo esc_html( $testimonial['text'] ); ?></p>
+	<ul class="testimonials-container row <?php echo esc_attr( $suffice_toolkit_style ); ?>">
+		<?php foreach ( $suffice_toolkit_repeatable_testimonial as $suffice_toolkit_testimonial ) { ?>
+		<li class="testimonial-item <?php echo esc_attr( suffice_get_column_class( $suffice_toolkit_columns ) ); ?>">
+			<?php if ( 'testimonials-sayings' === $suffice_toolkit_style ) : ?>
+				<p class="testimonial-content"><?php echo esc_html( $suffice_toolkit_testimonial['text'] ); ?></p>
 			<?php endif; ?>
 
-			<?php if ( ! empty( $testimonial['image'] ) ) { ?>
+			<?php if ( ! empty( $suffice_toolkit_testimonial['image'] ) ) { ?>
 				<figure class="testimonial-thumbnail">
-					<?php if ( 'testimonials-bubble' === $style ) : ?>
+					<?php if ( 'testimonials-bubble' === $suffice_toolkit_style ) : ?>
 						<div class="bubble-one"></div>
 						<div class="bubble-two"></div>
 					<?php endif ?>
-					<img src="<?php echo esc_url( $testimonial['image'] ); ?>" alt="<?php echo esc_attr( $testimonial['name'] ); ?>" />
+					<img src="<?php echo esc_url( $suffice_toolkit_testimonial['image'] ); ?>" alt="<?php echo esc_attr( $suffice_toolkit_testimonial['name'] ); ?>" />
 				</figure>
 			<?php } ?>
 
 			<div class="testimonial-description">
-				<?php if ( 'testimonials-bubble' === $style || 'testimonials-big' === $style ) : ?>
-				<p class="testimonial-content"><?php echo esc_html( $testimonial['text'] ); ?></p>
+				<?php if ( 'testimonials-bubble' === $suffice_toolkit_style || 'testimonials-big' === $suffice_toolkit_style ) : ?>
+				<p class="testimonial-content"><?php echo esc_html( $suffice_toolkit_testimonial['text'] ); ?></p>
 				<?php endif; ?>
-				<h5 class="testimonial-author"><?php echo esc_html( $testimonial['name'] ); ?></h5>
-				<span class="testimonial-author-position"><?php echo esc_html( $testimonial['byline'] ); ?></span>
+				<h5 class="testimonial-author"><?php echo esc_html( $suffice_toolkit_testimonial['name'] ); ?></h5>
+				<span class="testimonial-author-position"><?php echo esc_html( $suffice_toolkit_testimonial['byline'] ); ?></span>
 			</div>
 		</li> <!-- end testimonial-item -->
 		<?php } ?>

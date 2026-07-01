@@ -20,39 +20,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$repeatable_slider = isset( $instance['repeatable_slider'] ) ? $instance['repeatable_slider'] : array();
-$controls          = isset( $instance['controls'] ) ? $instance['controls'] : 'slider-controls-rounded';
-$height            = isset( $instance['height'] ) ? $instance['height'] : 'slider-height--default';
+$suffice_toolkit_repeatable_slider = isset( $instance['repeatable_slider'] ) ? $instance['repeatable_slider'] : array();
+$suffice_toolkit_controls          = isset( $instance['controls'] ) ? $instance['controls'] : 'slider-controls-rounded';
+$suffice_toolkit_height            = isset( $instance['height'] ) ? $instance['height'] : 'slider-height--default';
 ?>
 
-<?php if ( ! empty( $repeatable_slider ) ) : ?>
-	<div class="slider slider-hide-controls <?php echo esc_attr( $controls . ' ' . $height ); ?>">
+<?php if ( ! empty( $suffice_toolkit_repeatable_slider ) ) : ?>
+	<div class="slider slider-hide-controls <?php echo esc_attr( $suffice_toolkit_controls . ' ' . $suffice_toolkit_height ); ?>">
 		<div class="swiper-container" data-swiper-autoplay="true">
 			<div class="swiper-wrapper">
 				<?php
-				foreach ( $repeatable_slider as $slider ) {
-					if ( '' !== $slider['image'] ) {
+				foreach ( $suffice_toolkit_repeatable_slider as $suffice_toolkit_slider ) {
+					if ( '' !== $suffice_toolkit_slider['image'] ) {
 						?>
 						<div class="swiper-slide">
-							<div class="slider-content <?php echo esc_attr( $slider['content-style'] . ' ' . $slider['content-position'] ); ?>">
+							<div class="slider-content <?php echo esc_attr( $suffice_toolkit_slider['content-style'] . ' ' . $suffice_toolkit_slider['content-position'] ); ?>">
 								<div class="container">
 									<div class="slider-content-inner">
-										<?php if ( ! empty( $slider['title'] ) ) : ?>
-											<h3 class="slider-title"><?php echo esc_html( $slider['title'] ); ?></h3>
+										<?php if ( ! empty( $suffice_toolkit_slider['title'] ) ) : ?>
+											<h3 class="slider-title"><?php echo esc_html( $suffice_toolkit_slider['title'] ); ?></h3>
 										<?php endif ?>
 
-										<?php if ( ! empty( $slider['text'] ) ) : ?>
-											<p class="slider-description"><?php echo esc_html( $slider['text'] ); ?></p>
+										<?php if ( ! empty( $suffice_toolkit_slider['text'] ) ) : ?>
+											<p class="slider-description"><?php echo esc_html( $suffice_toolkit_slider['text'] ); ?></p>
 										<?php endif ?>
 
-										<?php if ( ! empty( $slider['more-text'] ) ) : ?>
-											<a class="btn <?php echo esc_attr( $slider['button-style'] . ' ' . $slider['button-edge'] . ' ' . $slider['button-width'] ); ?> btn-primary" href="<?php echo esc_url( $slider['more-url'] ); ?>"> <?php echo esc_attr( $slider['more-text'] ); ?> </a>
+										<?php if ( ! empty( $suffice_toolkit_slider['more-text'] ) ) : ?>
+											<a class="btn <?php echo esc_attr( $suffice_toolkit_slider['button-style'] . ' ' . $suffice_toolkit_slider['button-edge'] . ' ' . $suffice_toolkit_slider['button-width'] ); ?> btn-primary" href="<?php echo esc_url( $suffice_toolkit_slider['more-url'] ); ?>"> <?php echo esc_attr( $suffice_toolkit_slider['more-text'] ); ?> </a>
 										<?php endif ?>
 									</div> <!-- slider-content-inner -->
 								</div> <!-- .container -->
 							</div> <!-- .slider-content -->
 							<figure class="slider-thumbnail">
-								<img src="<?php echo esc_url( $slider['image'] ); ?>" alt="<?php echo esc_html( $slider['title'] ); ?>" />
+								<img src="<?php echo esc_url( $suffice_toolkit_slider['image'] ); ?>" alt="<?php echo esc_html( $suffice_toolkit_slider['title'] ); ?>" />
 							</figure>
 						</div> <!-- swiper-slide -->
 						<?php

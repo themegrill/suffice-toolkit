@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * ST_Sidebars Class
  */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class ST_Sidebars {
 
 	/**
@@ -82,7 +83,7 @@ class ST_Sidebars {
 	 * Output Sidebar Templates.
 	 */
 	public function output_sidebar_tmpl() {
-		include_once( 'admin/views/html-admin-tmpl-sidebars.php' );
+		include_once 'admin/views/html-admin-tmpl-sidebars.php';
 	}
 
 	/**
@@ -90,17 +91,18 @@ class ST_Sidebars {
 	 */
 	public function add_custom_sidebars() {
 		if ( ! empty( $_POST['suffice-toolkit-add-sidebar'] ) && isset( $_POST['_suffice_toolkit_sidebar_nonce'] ) ) {
-			if ( ! wp_verify_nonce( $_POST['_suffice_toolkit_sidebar_nonce'], 'suffice_toolkit_add_sidebar' ) ) {
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
+			if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_suffice_toolkit_sidebar_nonce'] ) ), 'suffice_toolkit_add_sidebar' ) ) {
+				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'suffice-toolkit' ) );
 			}
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'suffice-toolkit' ) );
+				wp_die( esc_html__( "Cheatin' huh?", 'suffice-toolkit' ) );
 			}
 
-			$sidebar_name = suffice_clean( $_POST['suffice-toolkit-add-sidebar'] );
+			$sidebar_name = suffice_clean( $_POST['suffice-toolkit-add-sidebar'] ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- unslash and sanitized in suffice_clean()
+
 			self::add_sidebar( self::validate_sidebar_name( $sidebar_name ) );
-			wp_redirect( admin_url( 'widgets.php' ) );
+			wp_safe_redirect( admin_url( 'widgets.php' ) );
 		}
 	}
 
@@ -108,12 +110,15 @@ class ST_Sidebars {
 	 * Register Custom Widgets Area (Sidebars).
 	 */
 	public function register_custom_sidebars() {
-		$args = apply_filters( 'suffice_toolkit_custom_widget_args', array(
-			'before_widget' => '<aside id="%1$s" class="widget clearfix %2$s">',
-			'after_widget'  => '<span class="seperator extralight-border"></span></aside>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>'
-		) );
+		$args = apply_filters(
+			'suffice_toolkit_custom_widget_args',
+			array(
+				'before_widget' => '<aside id="%1$s" class="widget clearfix %2$s">',
+				'after_widget'  => '<span class="seperator extralight-border"></span></aside>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
+			)
+		);
 
 		$sidebars = get_option( 'suffice_toolkit_custom_sidebars', array() );
 
@@ -121,7 +126,11 @@ class ST_Sidebars {
 			$args['name']        = $name;
 			$args['id']          = 'suffice-toolkit-sidebar-' . ++$id;
 			$args['class']       = 'suffice-toolkit-custom-widgets-area';
-			$args['description'] = sprintf( __( 'Custom Widget Area of the site - %s ', 'suffice-toolkit' ), $name );
+			$args['description'] = sprintf(
+				/* translators: %s: widget area name */
+				__( 'Custom Widget Area of the site - %s', 'suffice-toolkit' ),
+				$name
+			);
 			register_sidebar( $args );
 		}
 	}

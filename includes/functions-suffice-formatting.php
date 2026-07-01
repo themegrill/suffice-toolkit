@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function suffice_clean( $var ) {
-	return is_array( $var ) ? array_map( 'suffice_clean', $var ) : sanitize_text_field( $var );
+	return is_array( $var ) ? array_map( 'suffice_clean', $var ) : sanitize_text_field( wp_unslash( $var ) );
 }
 
 /**
@@ -31,17 +31,22 @@ function suffice_clean( $var ) {
  * @return string
  */
 function suffice_toolkit_sanitize_tooltip( $var ) {
-	return htmlspecialchars( wp_kses( html_entity_decode( $var ), array(
-		'br'     => array(),
-		'em'     => array(),
-		'strong' => array(),
-		'small'  => array(),
-		'span'   => array(),
-		'ul'     => array(),
-		'li'     => array(),
-		'ol'     => array(),
-		'p'      => array(),
-	) ) );
+	return htmlspecialchars(
+		wp_kses(
+			html_entity_decode( $var ),
+			array(
+				'br'     => array(),
+				'em'     => array(),
+				'strong' => array(),
+				'small'  => array(),
+				'span'   => array(),
+				'ul'     => array(),
+				'li'     => array(),
+				'ol'     => array(),
+				'p'      => array(),
+			)
+		)
+	);
 }
 
 /**

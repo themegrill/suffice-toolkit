@@ -32,11 +32,11 @@ class ST_Admin {
 	 * Includes any classes we need within admin.
 	 */
 	public function includes() {
-		include_once( dirname( __FILE__ ) . '/functions-suffice-admin.php' );
-		include_once( dirname( __FILE__ ) . '/functions-suffice-meta-box.php' );
-		include_once( dirname( __FILE__ ) . '/class-suffice-admin-notices.php' );
-		include_once( dirname( __FILE__ ) . '/class-suffice-admin-assets.php' );
-		include_once( dirname( __FILE__ ) . '/class-suffice-admin-post-types.php' );
+		include_once __DIR__ . '/functions-suffice-admin.php';
+		include_once __DIR__ . '/functions-suffice-meta-box.php';
+		include_once __DIR__ . '/class-suffice-admin-notices.php';
+		include_once __DIR__ . '/class-suffice-admin-assets.php';
+		include_once __DIR__ . '/class-suffice-admin-post-types.php';
 	}
 
 	/**
@@ -48,8 +48,8 @@ class ST_Admin {
 		}
 
 		switch ( $screen->id ) {
-			case 'options-permalink' :
-				include( 'class-suffice-admin-permalink-settings.php' );
+			case 'options-permalink':
+				include 'class-suffice-admin-permalink-settings.php';
 		}
 	}
 
@@ -69,13 +69,20 @@ class ST_Admin {
 		if ( isset( $current_screen->id ) && apply_filters( 'suffice_toolkit_display_admin_footer_text', in_array( $current_screen->id, $ft_pages ) ) ) {
 			// Change the footer text.
 			if ( ! get_option( 'suffice_toolkit_admin_footer_text_rated' ) ) {
-				$footer_text = sprintf( __( 'If you like <strong>Suffice Toolkit</strong> please leave us a %s&#9733;&#9733;&#9733;&#9733;&#9733;%s rating. A huge thanks in advance!', 'suffice-toolkit' ), '<a href="https://wordpress.org/support/view/plugin-reviews/suffice-toolkit?filter=5#postform" target="_blank" class="suffice-toolkit-rating-link" data-rated="' . esc_attr__( 'Thanks :)', 'suffice-toolkit' ) . '">', '</a>' );
-				suffice_toolkit_enqueue_js( "
+				$footer_text = sprintf(
+					/* translators: %1$s: opening HTML anchor tag for the rating link, %2$s: closing HTML anchor tag */
+					__( 'If you like <strong>Suffice Toolkit</strong> please leave us a %1$s&#9733;&#9733;&#9733;&#9733;&#9733;%2$s rating. A huge thanks in advance!', 'suffice-toolkit' ),
+					'<a href="https://wordpress.org/support/view/plugin-reviews/suffice-toolkit?filter=5#postform" target="_blank" class="suffice-toolkit-rating-link" data-rated="' . esc_attr__( 'Thanks :)', 'suffice-toolkit' ) . '">',
+					'</a>'
+				);
+				suffice_toolkit_enqueue_js(
+					"
 					jQuery( 'a.suffice-toolkit-rating-link' ).click( function() {
 						jQuery.post( '" . ST()->ajax_url() . "', { action: 'suffice_toolkit_rated' } );
 						jQuery( this ).parent().text( jQuery( this ).data( 'rated' ) );
 					});
-				" );
+				"
+				);
 			} else {
 				$footer_text = __( 'Thank you for creating with Suffice Toolkit.', 'suffice-toolkit' );
 			}

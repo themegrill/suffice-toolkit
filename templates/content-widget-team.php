@@ -19,46 +19,47 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-$name             = isset( $instance['name'] ) ? $instance['name'] : '';
-$image            = isset( $instance['image'] ) ? $instance['image'] : '';
-$designation      = isset( $instance['designation'] ) ? $instance['designation'] : '';
-$style            = isset( $instance['style'] ) ? $instance['style'] : 'team-default';
-$linktarget       = isset( $instance['link-target'] ) ? $instance['link-target'] : 'same-window';
-$repeatable_icons = isset( $instance['repeatable_icons'] ) ? $instance['repeatable_icons'] : array();
+$suffice_toolkit_name             = isset( $instance['name'] ) ? $instance['name'] : '';
+$suffice_toolkit_image            = isset( $instance['image'] ) ? $instance['image'] : '';
+$suffice_toolkit_designation      = isset( $instance['designation'] ) ? $instance['designation'] : '';
+$suffice_toolkit_style            = isset( $instance['style'] ) ? $instance['style'] : 'team-default';
+$suffice_toolkit_linktarget       = isset( $instance['link-target'] ) ? $instance['link-target'] : 'same-window';
+$suffice_toolkit_repeatable_icons = isset( $instance['repeatable_icons'] ) ? $instance['repeatable_icons'] : array();
 ?>
-<div class="team-member <?php echo esc_attr( $style ); ?>">
+<div class="team-member <?php echo esc_attr( $suffice_toolkit_style ); ?>">
 	<div class="team-member-inner">
 		<figure class="team-member-thumbnail">
 			<span class="team-bubble-one"></span>
 			<span class="team-bubble-two"></span>
-			<?php if ( $image && ! empty( $image ) ) : ?>
+			<?php if ( $suffice_toolkit_image && ! empty( $suffice_toolkit_image ) ) : ?>
 				<div class="team-member-thumbnail-inner">
-					<img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $name ); ?>" />
+					<img src="<?php echo esc_url( $suffice_toolkit_image ); ?>" alt="<?php echo esc_attr( $suffice_toolkit_name ); ?>" />
 				</div>
 			<?php endif ?>
-			<?php if ( 'team-default' === $style && ! empty( $repeatable_icons ) ) : ?>
+			<?php if ( 'team-default' === $suffice_toolkit_style && ! empty( $suffice_toolkit_repeatable_icons ) ) : ?>
 			<figcaption class="team-social-icons">
 				<ul class="social-links">
-					<?php foreach ( $repeatable_icons as $icon ) : ?>
-						<li><a href="<?php echo esc_url( $icon['icon-link'] ); ?>"></a></li>
+					<?php foreach ( $suffice_toolkit_repeatable_icons as $suffice_toolkit_icon ) : ?>
+						<li><a href="<?php echo esc_url( $suffice_toolkit_icon['icon-link'] ); ?>"></a></li>
 					<?php endforeach; ?>
 				</ul>
 			</figcaption>
 			<?php endif; ?>
 		</figure>
 		<div class="team-member-description">
-			<?php if ( ! empty( $name ) ) : ?>
-			<h5 class="team-member-title"><?php echo esc_html( $name ); ?></h5>
+			<?php if ( ! empty( $suffice_toolkit_name ) ) : ?>
+			<h5 class="team-member-title"><?php echo esc_html( $suffice_toolkit_name ); ?></h5>
 			<?php endif; ?>
-			<?php if ( ! empty( $designation ) ) : ?>
-			<span class="team-member-position"><?php echo esc_html( $designation ); ?></span>
+			<?php if ( ! empty( $suffice_toolkit_designation ) ) : ?>
+			<span class="team-member-position"><?php echo esc_html( $suffice_toolkit_designation ); ?></span>
 			<?php endif; ?>
-			<?php if ( ( 'team-boxed' === $style || 'team-bubble' === $style ) && ! empty( $repeatable_icons ) ) : ?>
+			<?php if ( ( 'team-boxed' === $suffice_toolkit_style || 'team-bubble' === $suffice_toolkit_style ) && ! empty( $suffice_toolkit_repeatable_icons ) ) : ?>
 				<div class="team-social-icons">
 					<ul class="social-links">
 						<?php
-						foreach ( $repeatable_icons as $icon ) : ?>
-							<li><a href="<?php echo esc_url( $icon['icon-link'] ); ?>"></a></li>
+						foreach ( $suffice_toolkit_repeatable_icons as $suffice_toolkit_icon ) :
+							?>
+							<li><a href="<?php echo esc_url( $suffice_toolkit_icon['icon-link'] ); ?>"></a></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>

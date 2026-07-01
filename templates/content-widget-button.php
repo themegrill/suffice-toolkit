@@ -23,50 +23,54 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * General.
  */
-$widget_id = isset( $args['widget_id'] ) ? $args['widget_id'] : '';
-$btn_text  = isset( $instance['btn-text'] ) ? $instance['btn-text'] : '';
-$btn_url   = isset( $instance['btn-url'] ) ? $instance['btn-url'] : '';
-$icon      = isset( $instance['icon'] ) ? $instance['icon'] : '';
+$suffice_toolkit_widget_id = isset( $args['widget_id'] ) ? $args['widget_id'] : '';
+$suffice_toolkit_btn_text  = isset( $instance['btn-text'] ) ? $instance['btn-text'] : '';
+$suffice_toolkit_btn_url   = isset( $instance['btn-url'] ) ? $instance['btn-url'] : '';
+$suffice_toolkit_icon      = isset( $instance['icon'] ) ? $instance['icon'] : '';
 
 /**
  * Styling.
  */
-$icon_position = isset( $instance['icon-position'] ) ? $instance['icon-position'] : 'icon-left';
-$target        = isset( $instance['target'] ) ? $instance['target'] : 'same-window';
-$btn_style     = isset( $instance['button-style'] ) ? $instance['button-style'] : 'btn-default';
-$btn_edge      = isset( $instance['button-edge'] ) ? $instance['button-edge'] : 'btn-flat';
-$btn_width     = isset( $instance['button-width'] ) ? $instance['button-width'] : 'btn-medium';
-$btn_align     = isset( $instance['button-align'] ) ? $instance['button-align'] : 'btn-left';
+$suffice_toolkit_icon_position = isset( $instance['icon-position'] ) ? $instance['icon-position'] : 'icon-left';
+$suffice_toolkit_target        = isset( $instance['target'] ) ? $instance['target'] : 'same-window';
+$suffice_toolkit_btn_style     = isset( $instance['button-style'] ) ? $instance['button-style'] : 'btn-default';
+$suffice_toolkit_btn_edge      = isset( $instance['button-edge'] ) ? $instance['button-edge'] : 'btn-flat';
+$suffice_toolkit_btn_width     = isset( $instance['button-width'] ) ? $instance['button-width'] : 'btn-medium';
+$suffice_toolkit_btn_align     = isset( $instance['button-align'] ) ? $instance['button-align'] : 'btn-left';
 
 /**
  * Color.
  */
-$icon_color       = isset( $instance['icon-color'] ) ? $instance['icon-color'] : '';
-$text_color       = isset( $instance['text-color'] ) ? $instance['text-color'] : '';
-$background_color = isset( $instance['background-color'] ) ? $instance['background-color'] : '';
+$suffice_toolkit_icon_color       = isset( $instance['icon-color'] ) ? $instance['icon-color'] : '';
+$suffice_toolkit_text_color       = isset( $instance['text-color'] ) ? $instance['text-color'] : '';
+$suffice_toolkit_background_color = isset( $instance['background-color'] ) ? $instance['background-color'] : '';
 
-$custom_icon_style = suffice_toolkit_inline_style( array(
-	'color' => $icon_color,
-) );
+$suffice_toolkit_custom_icon_style = suffice_toolkit_inline_style(
+	array(
+		'color' => $suffice_toolkit_icon_color,
+	)
+);
 
-$custom_text_style = suffice_toolkit_inline_style( array(
-	'color'            => $text_color,
-	'background_color' => $background_color,
-) );
+$suffice_toolkit_custom_text_style = suffice_toolkit_inline_style(
+	array(
+		'color'            => $suffice_toolkit_text_color,
+		'background_color' => $suffice_toolkit_background_color,
+	)
+);
 ?>
 
-<div class="<?php echo esc_attr( $btn_align ); ?>">
+<div class="<?php echo esc_attr( $suffice_toolkit_btn_align ); ?>">
 	<?php
-	if ( ! empty( $btn_url ) ) {
-		$linktarget = ( 'new-window' === $target ? 'target="_blank"' : '' );
+	if ( ! empty( $suffice_toolkit_btn_url ) ) {
+		$suffice_toolkit_linktarget = ( 'new-window' === $suffice_toolkit_target ? 'target="_blank"' : '' );
 		?>
-		<a <?php echo esc_attr( $linktarget ); ?> class="btn <?php echo esc_attr( $btn_edge ) . ' ' . esc_attr( $btn_width ); ?>"<?php echo esc_attr( $custom_text_style ); ?> href="<?php echo esc_url( $btn_url ); ?>">
-			<?php if ( ! empty( $icon ) ) { ?>
-				<span class="fa <?php echo esc_attr( $icon ) . ' ' . esc_attr( $icon_position ); ?>"<?php echo esc_attr( $custom_icon_style ); ?>></span>
+		<a <?php echo esc_attr( $suffice_toolkit_linktarget ); ?> class="btn <?php echo esc_attr( $suffice_toolkit_btn_edge ) . ' ' . esc_attr( $suffice_toolkit_btn_width ); ?>"<?php echo esc_attr( $suffice_toolkit_custom_text_style ); ?> href="<?php echo esc_url( $suffice_toolkit_btn_url ); ?>">
+			<?php if ( ! empty( $suffice_toolkit_icon ) ) { ?>
+				<span class="fa <?php echo esc_attr( $suffice_toolkit_icon ) . ' ' . esc_attr( $suffice_toolkit_icon_position ); ?>"<?php echo esc_attr( $suffice_toolkit_custom_icon_style ); ?>></span>
 				<?php
 			}
 
-			echo esc_html( $btn_text );
+			echo esc_html( $suffice_toolkit_btn_text );
 			?>
 		</a>
 	<?php } ?>

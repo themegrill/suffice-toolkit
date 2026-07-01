@@ -20,11 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$image = isset( $instance['image'] ) ? $instance['image'] : '';
-$link  = isset( $instance['image_link'] ) ? $instance['image_link'] : '';
+$suffice_toolkit_image = isset( $instance['image'] ) ? $instance['image'] : '';
+$suffice_toolkit_link  = isset( $instance['image_link'] ) ? $instance['image_link'] : '';
 ?>
-<?php if ( ! empty( $link ) ) { ?>
-	<a href="<?php echo esc_url( $link ); ?>"><img src="<?php echo esc_url( $image ); ?>" /></a>
+<?php if ( ! empty( $suffice_toolkit_link ) ) { ?>
+	<a href="<?php echo esc_url( $suffice_toolkit_link ); ?>"><img src="<?php echo esc_url( $suffice_toolkit_image ); ?>" /></a>
 <?php } else { ?>
-	<img src="<?php echo esc_url( $image ); ?>" />
+	<img src="<?php echo esc_url( $suffice_toolkit_image ); ?>" />
 <?php } ?>

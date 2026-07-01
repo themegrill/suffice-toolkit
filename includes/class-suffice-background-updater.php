@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once( dirname( __FILE__ ) . '/libraries/wp-async-request.php' );
-include_once( dirname( __FILE__ ) . '/libraries/wp-background-process.php' );
+require_once __DIR__ . '/libraries/wp-async-request.php';
+require_once __DIR__ . '/libraries/wp-background-process.php';
 
 /**
  * ST_Background_Updater Class.
@@ -89,10 +89,10 @@ class ST_Background_Updater extends WP_Background_Process {
 	 */
 	protected function task( $callback ) {
 		if ( ! defined( 'ST_UPDATING' ) ) {
-			define( 'ST_UPDATING', true );
+			define( 'ST_UPDATING', true ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 		}
 
-		include_once( dirname( __FILE__ ) . '/functions-suffice-update.php' );
+		include_once __DIR__ . '/functions-suffice-update.php';
 
 		if ( is_callable( $callback ) ) {
 			call_user_func( $callback );

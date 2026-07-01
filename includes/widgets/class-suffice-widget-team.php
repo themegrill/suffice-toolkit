@@ -32,7 +32,7 @@ class ST_Widget_Team extends ST_Widget {
 		$this->settings           = apply_filters( 'suffice_toolkit_widget_settings_' . $this->widget_id, array(
 			'name' => array(
 				'type'  => 'text',
-				'std'   => __( '', 'suffice-toolkit' ),
+				'std'   => '',
 				'label' => __( 'Team Member Name', 'suffice-toolkit' ),
 				'group' => __( 'General', 'suffice-toolkit' ),
 			),

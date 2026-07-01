@@ -20,40 +20,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$number   = isset( $instance['number'] ) ? $instance['number'] : '6';
-$source   = isset( $instance['source'] ) ? $instance['source'] : '';
-$category = isset( $instance['category'] ) ? $instance['category'] : '';
-$style    = isset( $instance['style'] ) ? $instance['style'] : '';
-$column   = isset( $instance['column'] ) ? $instance['column'] : 3;
+$suffice_toolkit_number   = isset( $instance['number'] ) ? $instance['number'] : '6';
+$suffice_toolkit_source   = isset( $instance['source'] ) ? $instance['source'] : '';
+$suffice_toolkit_category = isset( $instance['category'] ) ? $instance['category'] : '';
+$suffice_toolkit_style    = isset( $instance['style'] ) ? $instance['style'] : '';
+$suffice_toolkit_column   = isset( $instance['column'] ) ? $instance['column'] : 3;
 
-if ( 'latest' === $source ) {
-	$get_featured_posts = new WP_Query( array(
-		'posts_per_page'      => $number,
-		'post_type'           => 'post',
-		'ignore_sticky_posts' => true,
-	) );
+if ( 'latest' === $suffice_toolkit_source ) {
+	$suffice_toolkit_get_featured_posts = new WP_Query(
+		array(
+			'posts_per_page'      => $suffice_toolkit_number,
+			'post_type'           => 'post',
+			'ignore_sticky_posts' => true,
+		)
+	);
 } else {
-	$get_featured_posts = new WP_Query( array(
-		'posts_per_page' => $number,
-		'post_type'      => 'post',
-		'category__in'   => $category,
-	) );
+	$suffice_toolkit_get_featured_posts = new WP_Query(
+		array(
+			'posts_per_page' => $suffice_toolkit_number,
+			'post_type'      => 'post',
+			'category__in'   => $suffice_toolkit_category,
+		)
+	);
 }
 
-$thumbnail_size = 'suffice-thumbnail-grid';
+$suffice_toolkit_thumbnail_size = 'suffice-thumbnail-grid';
 
 // Choose image size.
-if ( 'post-style-grid' === $style && '1' === $column ) {
-	$thumbnail_size = 'full';
-} elseif ( 'post-style-list' === $style ) {
-	$thumbnail_size = 'thumbnail';
+if ( 'post-style-grid' === $suffice_toolkit_style && '1' === $suffice_toolkit_column ) {
+	$suffice_toolkit_thumbnail_size = 'full';
+} elseif ( 'post-style-list' === $suffice_toolkit_style ) {
+	$suffice_toolkit_thumbnail_size = 'thumbnail';
 }
 
 
 ?>
 
 <div class="blog-post-container">
-	<?php if ( 'post-style-carousel' === $style ) : ?>
+	<?php if ( 'post-style-carousel' === $suffice_toolkit_style ) : ?>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 
@@ -61,21 +65,21 @@ if ( 'post-style-grid' === $style && '1' === $column ) {
 			<div class="row">
 				<?php endif ?>
 				<?php
-				while ( $get_featured_posts->have_posts() ) :
-					$get_featured_posts->the_post();
+				while ( $suffice_toolkit_get_featured_posts->have_posts() ) :
+					$suffice_toolkit_get_featured_posts->the_post();
 					?>
-					<article class="post col-sm-6 <?php echo esc_attr( $style . ' ' . ( 'post-style-carousel' === $style ? 'swiper-slide' : suffice_get_column_class( $column ) ) . '' ); ?>">
+					<article class="post col-sm-6 <?php echo esc_attr( $suffice_toolkit_style . ' ' . ( 'post-style-carousel' === $suffice_toolkit_style ? 'swiper-slide' : suffice_get_column_class( $suffice_toolkit_column ) ) . '' ); ?>">
 						<div class="article-inner">
 
 							<!-- ====== Entry Thumbnail =====  -->
 							<figure class="entry-thumbnail">
-								<?php the_post_thumbnail( $thumbnail_size ); ?>
-								<?php if ( 'post-style-list' === $style ) : ?>
+								<?php the_post_thumbnail( $suffice_toolkit_thumbnail_size ); ?>
+								<?php if ( 'post-style-list' === $suffice_toolkit_style ) : ?>
 									<div class="entry-date"><?php echo get_the_date( 'M d' ); ?></div>
 								<?php endif; ?>
 							</figure>
 
-							<?php if ( 'post-style-overlay' === $style || 'post-style-carousel' === $style ) : ?>
+							<?php if ( 'post-style-overlay' === $suffice_toolkit_style || 'post-style-carousel' === $suffice_toolkit_style ) : ?>
 							<div class="overlay-inner">
 								<?php endif ?>
 
@@ -83,14 +87,16 @@ if ( 'post-style-grid' === $style && '1' === $column ) {
 								<header class="entry-header">
 									<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 										<h3 class="entry-title"><?php echo esc_html( get_the_title() ); ?></h3></a>
-									<?php if ( 'post-style-grid' === $style ) : ?>
+									<?php if ( 'post-style-grid' === $suffice_toolkit_style ) : ?>
 										<div class="entry-meta">
 						<span class="posted-by">
-						<?php
-						printf( esc_html_x( 'by %s', 'post author', 'suffice-toolkit' ),
-							'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
-						);
-						?>
+										<?php
+										printf(
+										/* translators: %s: post author link */
+											esc_html_x( 'by %s', 'post author', 'suffice-toolkit' ),
+											'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
+										);
+										?>
 						</span>
 											<?php
 											if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
@@ -109,7 +115,7 @@ if ( 'post-style-grid' === $style && '1' === $column ) {
 									<p>
 										<?php
 										// If post style is list, trim excerpt.
-										if ( 'post-style-list' === $style || 'post-style-carousel' === $style ) {
+										if ( 'post-style-list' === $suffice_toolkit_style || 'post-style-carousel' === $suffice_toolkit_style ) {
 											echo esc_html( wp_trim_words( get_the_excerpt(), 20 ) );
 										} else {
 											echo esc_html( get_the_excerpt() );
@@ -117,20 +123,22 @@ if ( 'post-style-grid' === $style && '1' === $column ) {
 										?>
 									</p>
 
-									<?php if ( 'post-style-grid' === $style ) : ?>
+									<?php if ( 'post-style-grid' === $suffice_toolkit_style ) : ?>
 										<a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more"><?php esc_html_e( 'Read More', 'suffice-toolkit' ); ?></a>
 									<?php endif ?>
 								</div> <!-- entry-content -->
 
 								<!-- ====== Entry Meta =====  -->
-								<?php if ( 'post-style-list' === $style || 'post-style-overlay' === $style ) : ?>
+								<?php if ( 'post-style-list' === $suffice_toolkit_style || 'post-style-overlay' === $suffice_toolkit_style ) : ?>
 									<div class="entry-meta">
 						<span class="posted-by">
-						<?php
-						printf( esc_html_x( 'by %s', 'post author', 'suffice-toolkit' ),
-							'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
-						);
-						?>
+									<?php
+									printf(
+									/* translators: %s: post author link */
+										esc_html_x( 'by %s', 'post author', 'suffice-toolkit' ),
+										'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
+									);
+									?>
 						</span>
 										<?php
 										if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
@@ -146,23 +154,23 @@ if ( 'post-style-grid' === $style && '1' === $column ) {
 									</div>
 								<?php endif; ?>
 
-								<?php if ( 'post-style-carousel' === $style ) : ?>
+								<?php if ( 'post-style-carousel' === $suffice_toolkit_style ) : ?>
 									<div class="entry-meta">
 						<span class="posted-on">
-							<?php echo get_the_date( 'M d Y' ); ?>
+									<?php echo get_the_date( 'M d Y' ); ?>
 						</span>
 									</div>
 								<?php endif ?>
-								<?php if ( 'post-style-overlay' === $style || 'post-style-carousel' === $style ) : ?>
+								<?php if ( 'post-style-overlay' === $suffice_toolkit_style || 'post-style-carousel' === $suffice_toolkit_style ) : ?>
 								<div> <!-- .overlay-inner -->
 									<?php endif ?>
 								</div>  <!-- .article-inner -->
 					</article> <!-- end post-style-* -->
-				<?php
+					<?php
 				endwhile;
 				wp_reset_postdata();
 				?>
-				<?php if ( 'post-style-carousel' === $style ) : ?>
+				<?php if ( 'post-style-carousel' === $suffice_toolkit_style ) : ?>
 			</div> <!-- .swiper-wrapper -->
 			<div class="post-carousel-controls">
 				<span class="prev"><i class="fa fa-angle-left"></i></span>

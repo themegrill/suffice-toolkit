@@ -20,86 +20,90 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$source   = isset( $instance['source'] ) ? $instance['source'] : 'latest';
-$category = isset( $instance['category'] ) ? $instance['category'] : '';
-$style    = isset( $instance['style'] ) ? $instance['style'] : 'feature-post-style-one';
+$suffice_toolkit_source   = isset( $instance['source'] ) ? $instance['source'] : 'latest';
+$suffice_toolkit_category = isset( $instance['category'] ) ? $instance['category'] : '';
+$suffice_toolkit_style    = isset( $instance['style'] ) ? $instance['style'] : 'feature-post-style-one';
 
 // Image Size.
-$image_size = '';
-if ( 'feature-post-style-one' === $style ) {
-	$image_size = 'suffice-thumbnail-featured-one';
-} elseif ( 'feature-post-style-two' === $style ) {
-	$image_size = 'suffice-thumbnail-post-large';
+$suffice_toolkit_image_size = '';
+if ( 'feature-post-style-one' === $suffice_toolkit_style ) {
+	$suffice_toolkit_image_size = 'suffice-thumbnail-featured-one';
+} elseif ( 'feature-post-style-two' === $suffice_toolkit_style ) {
+	$suffice_toolkit_image_size = 'suffice-thumbnail-post-large';
 } else {
-	$image_size = 'suffice-thumbnail-post-large';
+	$suffice_toolkit_image_size = 'suffice-thumbnail-post-large';
 }
 
 // Number.
-$post_number = '';
-if ( 'feature-post-style-one' === $style ) {
-	$post_number = 4;
-} elseif ( 'feature-post-style-two' === $style ) {
-	$post_number = 4;
+$suffice_toolkit_post_number = '';
+if ( 'feature-post-style-one' === $suffice_toolkit_style ) {
+	$suffice_toolkit_post_number = 4;
+} elseif ( 'feature-post-style-two' === $suffice_toolkit_style ) {
+	$suffice_toolkit_post_number = 4;
 } else {
-	$post_number = 6;
+	$suffice_toolkit_post_number = 6;
 }
 
 // Row class.
-$row_class = 'row';
-if ( 'feature-post-style-one' === $style ) {
-	$row_class = 'row no-gutter';
-} elseif ( 'feature-post-style-two' === $style ) {
-	$row_class = 'no-row';
+$suffice_toolkit_row_class = 'row';
+if ( 'feature-post-style-one' === $suffice_toolkit_style ) {
+	$suffice_toolkit_row_class = 'row no-gutter';
+} elseif ( 'feature-post-style-two' === $suffice_toolkit_style ) {
+	$suffice_toolkit_row_class = 'no-row';
 }
 
 // Featured post class.
-$feature_post_class = '';
-if ( 'feature-post-style-one' === $style ) {
-	$feature_post_class = 'col-md-3';
-} elseif ( 'feature-post-style-three' === $style ) {
-	$feature_post_class = 'col-md-4';
+$suffice_toolkit_feature_post_class = '';
+if ( 'feature-post-style-one' === $suffice_toolkit_style ) {
+	$suffice_toolkit_feature_post_class = 'col-md-3';
+} elseif ( 'feature-post-style-three' === $suffice_toolkit_style ) {
+	$suffice_toolkit_feature_post_class = 'col-md-4';
 }
 
-if ( 'latest' === $source ) {
-	$get_featured_posts = new WP_Query( array(
-		'posts_per_page'      => $post_number,
-		'post_type'           => 'post',
-		'ignore_sticky_posts' => true,
-	) );
+if ( 'latest' === $suffice_toolkit_source ) {
+	$suffice_toolkit_get_featured_posts = new WP_Query(
+		array(
+			'posts_per_page'      => $suffice_toolkit_post_number,
+			'post_type'           => 'post',
+			'ignore_sticky_posts' => true,
+		)
+	);
 } else {
-	$get_featured_posts = new WP_Query( array(
-		'posts_per_page' => $post_number,
-		'post_type'      => 'post',
-		'category__in'   => $category,
-	) );
+	$suffice_toolkit_get_featured_posts = new WP_Query(
+		array(
+			'posts_per_page' => $suffice_toolkit_post_number,
+			'post_type'      => 'post',
+			'category__in'   => $suffice_toolkit_category,
+		)
+	);
 }
 ?>
 
-<div class="featured-post-container <?php echo esc_attr( $style ); ?>">
-	<div class="<?php echo esc_attr( $row_class ); ?>">
+<div class="featured-post-container <?php echo esc_attr( $suffice_toolkit_style ); ?>">
+	<div class="<?php echo esc_attr( $suffice_toolkit_row_class ); ?>">
 		<?php
-		while ( $get_featured_posts->have_posts() ) :
-			$get_featured_posts->the_post();
+		while ( $suffice_toolkit_get_featured_posts->have_posts() ) :
+			$suffice_toolkit_get_featured_posts->the_post();
 			?>
 
-			<?php if ( 1 === $get_featured_posts->current_post && 'feature-post-style-two' === $style ) : ?>
+			<?php if ( 1 === $suffice_toolkit_get_featured_posts->current_post && 'feature-post-style-two' === $suffice_toolkit_style ) : ?>
 			<div class="feature-post-grid-container">
 		<?php endif ?>
 
-			<article class="featured-post <?php echo esc_attr( $feature_post_class ); ?>">
+			<article class="featured-post <?php echo esc_attr( $suffice_toolkit_feature_post_class ); ?>">
 				<div class="article-inner">
 					<figure class="entry-thumbnail">
 						<?php if ( has_post_thumbnail() ) : ?>
-							<?php the_post_thumbnail( ( 0 === $get_featured_posts->current_post && 'feature-post-style-two' === $style ? 'suffice-thumbnail-featured-two' : $image_size ) ); ?>
+							<?php the_post_thumbnail( ( 0 === $suffice_toolkit_get_featured_posts->current_post && 'feature-post-style-two' === $suffice_toolkit_style ? 'suffice-thumbnail-featured-two' : $suffice_toolkit_image_size ) ); ?>
 						<?php else : ?>
-							<img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/img/no-' . $image_size . '.png' ); ?>" alt="">
+							<img src="<?php echo esc_attr( get_template_directory_uri() . '/assets/img/no-' . $suffice_toolkit_image_size . '.png' ); ?>" alt="">
 						<?php endif ?>
 					</figure>
 
 					<div class="entry-info-container">
 						<header class="entry-header">
 							<div class="entry-cat">
-								<span class="entry-cat-name entry-cat-id-<?php echo esc_attr( suffice_get_first_category_id( $source, $category ) ); ?>"><a href="<?php echo esc_url( suffice_get_first_category_link( $source, $category ) ); ?>"><?php echo esc_attr( suffice_get_first_category_name( $source, $category ) ); ?></a></span>
+								<span class="entry-cat-name entry-cat-id-<?php echo esc_attr( suffice_get_first_category_id( $suffice_toolkit_source, $suffice_toolkit_category ) ); ?>"><a href="<?php echo esc_url( suffice_get_first_category_link( $suffice_toolkit_source, $suffice_toolkit_category ) ); ?>"><?php echo esc_attr( suffice_get_first_category_name( $suffice_toolkit_source, $suffice_toolkit_category ) ); ?></a></span>
 							</div>
 
 							<a href="<?php echo esc_url( get_the_permalink() ); ?>">
@@ -121,15 +125,15 @@ if ( 'latest' === $source ) {
 						</header>
 
 						<div class="entry-content">
-							<p><?php echo esc_attr( wp_trim_words( get_the_excerpt(), $num_words = 10, $more = null ) ); ?></p>
+							<p><?php echo esc_attr( wp_trim_words( get_the_excerpt(), $num_words = 10, $more = null ) ); //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound, WordPress.WP.GlobalVariablesOverride.Prohibited ?></p>
 						</div>
 					</div>
 
 				</div>
 			</article>
-			<?php if ( $get_featured_posts->current_post === $get_featured_posts->post_count - 1 && 'feature-post-style-two' === $style ) : ?>
+			<?php if ( $suffice_toolkit_get_featured_posts->current_post === $suffice_toolkit_get_featured_posts->post_count - 1 && 'feature-post-style-two' === $suffice_toolkit_style ) : ?>
 			</div><!-- .feature-post-grid-container -->
-			<?php
+				<?php
 			endif;
 
 		endwhile;
