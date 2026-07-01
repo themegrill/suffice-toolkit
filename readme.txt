@@ -32,7 +32,7 @@ Get free support at https://themegrill.com/support-forum/
 
 == Changelog ==
 
-== 1.1.0 - 2026-04-24 ==
+== 1.1.0 - 2026-07-01 ==
 * Fix - Security and WordPress guideline compliance issues.
 * Fix - Internationalization and text domain corrections.
 * Fix - Sanitization, validation, and output escaping improvements.
