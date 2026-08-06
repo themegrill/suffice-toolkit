@@ -14,7 +14,7 @@
     "build-watch": "grunt watch"
   },
   "devDependencies": {
-    "grunt": "~1.4.1",
+    "grunt": "~1.5.3",
     "grunt-checktextdomain": "~1.0.1",
     "grunt-contrib-compress": "~2.0.0",
     "grunt-contrib-cssmin": "~4.0.0",
